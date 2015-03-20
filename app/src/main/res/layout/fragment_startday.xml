@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id = "@+id/title"
+        android:text="Your Visits for the Day"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp"
+        android:paddingBottom="0dp" />
+    <!-- List of Support Calls -->
+    <!--
+
+    1. Company Name
+    2. Point of Contact Name
+    3. Phone number
+    4. Address
+    -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/advice"
+        android:text = "(Please select a site to visit)"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="10dp"/>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id = "@+id/job_list"
+        android:layout_below="@+id/advice"
+        android:layout_marginLeft="30dp">
+
+    </ListView>
+</RelativeLayout>
