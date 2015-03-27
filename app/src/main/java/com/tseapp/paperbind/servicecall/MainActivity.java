@@ -123,12 +123,7 @@ public class MainActivity extends ActionBarActivity
 
         public void login()
         {
-            Fragment objFragment = null;
-            objFragment = new fragment_todo();
-            getActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.main,objFragment)
-                    .commit();
+            startActivity(new Intent(getActivity(),todolist.class));
 
         }
 
