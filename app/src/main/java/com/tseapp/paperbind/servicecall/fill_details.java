@@ -34,13 +34,13 @@ public class fill_details extends ActionBarActivity {
         prepareListData();
         listAdapter = new component(this, listDataHeader, listDataChild);
         // setting list adapter
-        expListView.setAdapter(listAdapter);
+        UIbuilder();
     }
 
 
     public void UIbuilder()
     {
-        submit = (Button) findViewById(R.id.submit);
+        submit = (Button) findViewById(R.id.start);
         submit.setOnClickListener(
                 new View.OnClickListener()
                 {
@@ -51,6 +51,10 @@ public class fill_details extends ActionBarActivity {
                     }
                 }
         );
+
+        expListView = (ExpandableListView) findViewById(R.id.expandableListView);
+        expListView.setAdapter(listAdapter);
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -108,5 +112,8 @@ public class fill_details extends ActionBarActivity {
         listDataChild.put(listDataHeader.get(0), pur); // Header, Child data
         listDataChild.put(listDataHeader.get(1), paper_cutting);
         listDataChild.put(listDataHeader.get(2), creaser);
+        listDataChild.put(listDataHeader.get(3), silt_cut);
+
+
     }
 }
