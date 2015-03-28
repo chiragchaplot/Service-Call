@@ -10,5 +10,6 @@
     <string name="title_activity_fill_details">fill_details</string>
     <string name="title_activity_counter">counter</string>
     <string name="title_activity_knowledge_base">knowledge_base</string>
+    <string name="title_activity_chose_location">chose_location</string>
 
 </resources>

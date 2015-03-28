@@ -3,6 +3,8 @@ package com.tseapp.paperbind.servicecall;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,6 +41,25 @@ public class service_start extends ActionBarActivity
         reset.setEnabled(false);
 
         barcode = (EditText) findViewById(R.id.barcode);
+
+        barcode.addTextChangedListener(
+                new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                        button_enabler();
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                }
+        );
 
         scan.setOnClickListener
                 (

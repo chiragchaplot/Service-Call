@@ -40,6 +40,10 @@
             android:name=".knowledge_base"
             android:label="@string/title_activity_knowledge_base" >
         </activity>
+        <activity
+            android:name=".chose_location"
+            android:label="@string/title_activity_chose_location" >
+        </activity>
     </application>
 
 </manifest>

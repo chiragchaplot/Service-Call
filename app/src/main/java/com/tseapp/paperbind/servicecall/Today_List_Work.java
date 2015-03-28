@@ -71,7 +71,7 @@ public class Today_List_Work extends ActionBarActivity
                         t.show();
                         s.job = chosen;
 
-                        startActivity(new Intent(getApplicationContext(),service_start.class));
+                        startActivity(new Intent(getApplicationContext(),chose_location.class));
 
                     }
                 });
