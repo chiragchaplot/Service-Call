@@ -1,11 +1,26 @@
 package com.tseapp.paperbind.servicecall;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by chiragchaplot on 3/27/15.
  */
 public class job_list
 {
-    public String name, line1,line2, area, city, state, pincode,phone,poc;
+    public String name, line1, area, city, state, pincode,phone,poc;
+
+    public job_list(String name, String line1, String area, String city, String state, String pincode, String phone, String poc)
+    {
+        this.name = name;
+        this.line1 = line1;
+        this.area = area;
+        this.city = city;
+        this.state = state;
+        this.pincode = pincode;
+        this.phone = phone;
+        this.poc = poc;
+    }
 
     public String getName() {
         return name;
@@ -21,14 +36,6 @@ public class job_list
 
     public void setLine1(String line1) {
         this.line1 = line1;
-    }
-
-    public String getLine2() {
-        return line2;
-    }
-
-    public void setLine2(String line2) {
-        this.line2 = line2;
     }
 
     public String getArea() {
@@ -78,6 +85,7 @@ public class job_list
     public void setPoc(String poc) {
         this.poc = poc;
     }
+
 
 
 }

@@ -24,6 +24,22 @@
             android:name=".Today_List_Work"
             android:label="@string/title_activity_today__list__work" >
         </activity>
+        <activity
+            android:name=".service_start"
+            android:label="@string/title_activity_service_start" >
+        </activity>
+        <activity
+            android:name=".fill_details"
+            android:label="@string/title_activity_fill_details" >
+        </activity>
+        <activity
+            android:name=".counter"
+            android:label="@string/title_activity_counter" >
+        </activity>
+        <activity
+            android:name=".knowledge_base"
+            android:label="@string/title_activity_knowledge_base" >
+        </activity>
     </application>
 
 </manifest>

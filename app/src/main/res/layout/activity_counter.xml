@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/container">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00"
+            android:id="@+id/hours"
+            android:textSize="64dip"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textSize="64dip"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00"
+            android:id="@+id/minutes"
+            android:textSize="64dip"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textSize="64dip"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00"
+            android:id="@+id/seconds"
+            android:textSize="64dip"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="000"
+            android:id="@+id/milliseconds"
+            android:layout_gravity="top"
+            android:gravity="top"/>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id = "@+id/company_name"
+            android:layout_centerHorizontal="true"
+            android:text = "Company Name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id = "@+id/location"
+            android:layout_centerHorizontal="true"
+            android:text = "Location"
+            android:layout_below="@+id/company_name"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id = "@+id/machine"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/location"
+            android:text = "Machine Name"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="End"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_marginLeft="90dp"
+            android:textSize="32dip"
+            android:layout_below="@+id/machine"
+            android:layout_marginTop="40dp" />
+    </RelativeLayout>
+
+
+</LinearLayout>

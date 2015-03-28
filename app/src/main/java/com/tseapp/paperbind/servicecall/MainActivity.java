@@ -111,7 +111,8 @@ public class MainActivity extends ActionBarActivity
                             pwd = password.getText().toString();
 
 
-                            if (id.length() > 0 && pwd.length() > 0) {
+                            if (id.length() > 0 && pwd.length() > 0)
+                            {
                                 login();
                             }
 
