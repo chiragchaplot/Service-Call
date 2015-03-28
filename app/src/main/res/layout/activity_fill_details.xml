@@ -69,6 +69,7 @@
             android:inputType="phone" />
 
 
+
         <ExpandableListView
             android:id="@+id/expandableListView"
             android:layout_width="wrap_content"
@@ -77,6 +78,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="34dp"
             />
+
 
         <Button
             android:id="@+id/start"

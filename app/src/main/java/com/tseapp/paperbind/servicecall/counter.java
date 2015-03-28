@@ -17,7 +17,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class counter extends ActionBarActivity {
+public class counter extends ActionBarActivity
+{
 
     private static boolean running = false;
     private static long startTime = 0;
@@ -27,13 +28,17 @@ public class counter extends ActionBarActivity {
     private TextView minutes;
     private TextView seconds;
     private TextView milliseconds;
+    public AlertDialog end_options;
 
     private int result;
+
+    public session s;
+
+    TextView name,location, machinename;
 
     private Runnable timer = new Runnable() {
         @Override
         public void run() {
-            Log.d(TAG, "Running");
             TimeConverter timeConverter = new TimeConverter(System.currentTimeMillis() - startTime);
             hour.setText(TimeConverter.twoDigits(timeConverter.getHours()));
             minutes.setText(TimeConverter.twoDigits(timeConverter.getMinutes()));
@@ -44,10 +49,11 @@ public class counter extends ActionBarActivity {
 
     };
 
-    public String[] items = {"Call Completed", "Call in Progress", "Escalation to Another Engineer"};
+    public String[] items = {"Call Completed", "Call in Progress", "Escalation to Another Engineer", "Cancel"};
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counter);
         hour = (TextView) findViewById(R.id.hours);
@@ -59,49 +65,69 @@ public class counter extends ActionBarActivity {
         timer.run();
         running = true;
 
-        Button button = (Button) findViewById(R.id.startButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(counter.this);
+        builder.setTitle("End of Day Options");
+        builder.setSingleChoiceItems
+                (items, -1, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int item) {
+                                switch (item) {
 
-                // Creating and Building the Dialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setTitle("End of Day Options");
-                builder.setSingleChoiceItems
-                        (items, -1, new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int item) {
-                                        switch (item) {
+                                    case 0:
+                                        //When Call is completed
+                                        handler.removeCallbacks(timer);
+                                        running = false;
+                                        result = 0;
+                                        startActivity(new Intent(getApplicationContext(),signature.class));
+                                        break;
 
-                                            case 0:
-                                                //When Call is completed
-                                                handler.removeCallbacks(timer);
-                                                running = false;
-                                                result = 0;
-                                                break;
+                                    case 1:
+                                        //When call is incomplete
+                                        running = false;
+                                        result = 1;
+                                        break;
 
-                                            case 1:
-                                                //When call is incomplete
-                                                running = false;
-                                                result = 1;
-                                                break;
+                                    case 2:
+                                        //When call is escalated to another engineer
+                                        handler.removeCallbacks(timer);
+                                        running = false;
+                                        result = 2;
+                                        startActivity(new Intent(getApplicationContext(),signature.class));
+                                        break;
 
-                                            case 2:
-                                                //When call is escalated to another engineer
-                                                handler.removeCallbacks(timer);
-                                                running = false;
-                                                result = 2;
-                                                break;
-
-                                        }
-
-
-                                    }
+                                    case 3:
+                                        break;
                                 }
-                        );
+                                end_options.dismiss();
+                            }
+                        }
+                );
+        end_options = builder.create();
+
+        Button button = (Button) findViewById(R.id.startButton);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                // Creating and Building the Dialog
+                end_options.show();
             }
 
         });
-        }
 
+        BuilderUI();
     }
+
+    public void BuilderUI()
+    {
+        name = (TextView) findViewById(R.id.company_name);
+        location = (TextView) findViewById(R.id.location);
+        machinename = (TextView) findViewById(R.id.machine);
+
+        name.setText(s.job.getName());
+        location.setText(s.job.getArea() + ", " + s.job.getCity() + ", " + s.job.getState());
+        machinename.setText(s.machine_code);
+    }
+
+}
 

@@ -44,6 +44,14 @@
             android:name=".chose_location"
             android:label="@string/title_activity_chose_location" >
         </activity>
+        <activity
+            android:name=".signature"
+            android:label="@string/title_activity_signature" >
+        </activity>
+        <activity
+            android:name=".master_view"
+            android:label="@string/title_activity_master_view" >
+        </activity>
     </application>
 
 </manifest>
