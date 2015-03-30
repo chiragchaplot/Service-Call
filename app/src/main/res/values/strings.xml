@@ -5,7 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_todolist">todolist</string>
-    <string name="title_activity_today__list__work">Today_List_Work</string>
+    <string name="title_activity_today__list__work">Today\'s Visits</string>
     <string name="title_activity_service_start">service_start</string>
     <string name="title_activity_fill_details">fill_details</string>
     <string name="title_activity_counter">counter</string>

@@ -13,7 +13,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -22,10 +22,13 @@
         </activity>
         <activity
             android:name=".Today_List_Work"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_today__list__work" >
         </activity>
         <activity
             android:name=".service_start"
+            android:screenOrientation="portrait"
+
             android:label="@string/title_activity_service_start" >
         </activity>
         <activity
@@ -34,27 +37,42 @@
         </activity>
         <activity
             android:name=".counter"
+            android:screenOrientation="portrait"
+
             android:label="@string/title_activity_counter" >
         </activity>
         <activity
             android:name=".knowledge_base"
+            android:screenOrientation="portrait"
+
             android:label="@string/title_activity_knowledge_base" >
         </activity>
         <activity
             android:name=".chose_location"
+            android:screenOrientation="portrait"
+
             android:label="@string/title_activity_chose_location" >
         </activity>
         <activity
             android:name=".signature"
+            android:screenOrientation="portrait"
+
             android:label="@string/title_activity_signature" >
         </activity>
         <activity
             android:name=".master_view"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_master_view" >
         </activity>
         <activity
             android:name=".welcome_screen"
-            android:label="@string/title_activity_welcome_screen" >
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:label="PaperBind TSE" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
