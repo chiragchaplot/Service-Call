@@ -7,22 +7,53 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class chose_location extends ActionBarActivity
 {
     Button home, current;
     session s;
+
+    public GPSTracker gpsTracker;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chose_location);
+        // check if GPS enabled
+        gpsTracker = new GPSTracker(this);
         UIbuilder();
-        //sendlocation();
+        send_location();
     }
 
 
+    public void send_location()
+    {
+        if (gpsTracker.canGetLocation())
+        {
+            String stringLatitude = String.valueOf(gpsTracker.latitude);
+
+
+            String stringLongitude = String.valueOf(gpsTracker.longitude);
+
+            String country = gpsTracker.getCountryName(this);
+
+            String city = gpsTracker.getLocality(this);
+
+            String postalCode = gpsTracker.getPostalCode(this);
+
+            String addressLine = gpsTracker.getAddressLine(this);
+            Toast.makeText(getApplicationContext(),stringLatitude+'\n'+stringLatitude+'\n'+country+'\n'+city+'\n'+postalCode+'\n'+addressLine,Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            // can't get location
+            // GPS or Network is not enabled
+            // Ask user to enable GPS/network in settings
+            Toast.makeText(getApplicationContext(),"Coordinates Not Found",Toast.LENGTH_SHORT).show();
+        }
+    }
     public void UIbuilder()
     {
         home = (Button) findViewById(R.id.home);
@@ -38,6 +69,7 @@ public class chose_location extends ActionBarActivity
             home.setEnabled(false);
             current.setEnabled(true);
         }
+
 
 
         home.setOnClickListener(
@@ -59,6 +91,10 @@ public class chose_location extends ActionBarActivity
                     }
                 }
         );
+
+        /*
+
+         */
     }
 
     /*

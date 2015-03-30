@@ -3,7 +3,8 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.tseapp.paperbind.servicecall.fill_details">
+    tools:context="com.tseapp.paperbind.servicecall.fill_details"
+    android:background="#ffffff">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,6 +20,7 @@
             android:id="@+id/company_name"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:text="Company Name" />
@@ -28,23 +30,23 @@
             android:id="@+id/address"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/company_name"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="28dp"
             android:ems="10"
             android:inputType="textPostalAddress"
-            android:text="Address" />
+            android:text="Address"
+            android:layout_below="@+id/company_name"
+            android:layout_alignLeft="@+id/company_name"
+            android:layout_alignStart="@+id/company_name" />
 
         <TextView
             android:id="@+id/company_phone"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="27dp"
             android:ems="10"
             android:inputType="phone"
-            android:text="Phone" />
+            android:text="Phone"
+            android:layout_below="@+id/address"
+            android:layout_alignLeft="@+id/address"
+            android:layout_alignStart="@+id/address" />
 
         <EditText
             android:id="@+id/poc"
@@ -52,6 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/company_phone"
             android:layout_centerHorizontal="true"
+            android:imeOptions="actionNext"
             android:layout_marginTop="30dp"
             android:ems="10"
             android:hint="Person Incharge"
@@ -64,6 +67,7 @@
             android:layout_below="@+id/poc"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="34dp"
+            android:imeOptions="actionDone"
             android:ems="10"
             android:hint="Phone Number"
             android:inputType="phone" />
@@ -76,6 +80,7 @@
             android:layout_height="300dp"
             android:layout_below="@+id/phone"
             android:layout_centerHorizontal="true"
+            android:choiceMode="singleChoice"
             android:layout_marginTop="34dp"
             />
 

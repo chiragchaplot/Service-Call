@@ -54,6 +54,16 @@ public class fill_details extends ActionBarActivity {
 
         expListView = (ExpandableListView) findViewById(R.id.expandableListView);
         expListView.setAdapter(listAdapter);
+        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            int previousGroup = -1;
+
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                if(groupPosition != previousGroup)
+                    expListView.collapseGroup(previousGroup);
+                previousGroup = groupPosition;
+            }
+        });
 
     }
     @Override

@@ -8,7 +8,7 @@ import android.os.Parcelable;
  */
 public class job_list
 {
-    public String name, line1, area, city, state, pincode,phone,poc;
+    public String name, line1, area, city, state, pincode,phone,poc,machine_code;
 
     public job_list(String name, String line1, String area, String city, String state, String pincode, String phone, String poc)
     {

@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/emp_id"
         android:hint = "Employee ID"
+        android:imeOptions="actionNext"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/apptheme_edit_text_holo_light"
@@ -28,6 +29,8 @@
         android:ems="10"
         android:id="@+id/password"
         android:hint = "Password"
+        android:imeOptions="actionDone"
+
         android:layout_below="@+id/emp_id"
         android:background="@drawable/apptheme_edit_text_holo_light"
         android:layout_centerHorizontal="true"
