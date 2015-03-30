@@ -52,6 +52,10 @@
             android:name=".master_view"
             android:label="@string/title_activity_master_view" >
         </activity>
+        <activity
+            android:name=".welcome_screen"
+            android:label="@string/title_activity_welcome_screen" >
+        </activity>
     </application>
 
 </manifest>

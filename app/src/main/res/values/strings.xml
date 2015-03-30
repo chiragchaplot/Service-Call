@@ -13,5 +13,6 @@
     <string name="title_activity_chose_location">chose_location</string>
     <string name="title_activity_signature">signature</string>
     <string name="title_activity_master_view">master_view</string>
+    <string name="title_activity_welcome_screen">welcome_screen</string>
 
 </resources>

@@ -11,7 +11,7 @@
 // array for JSON response
 $response = array();
 // check for required fields
-if (isset($_GET['email']) && isset($_GET['password'])) 
+if (isset($_GET['emp_id']) && isset($_GET['password'])) 
 {
 	$email = $_GET['email'];
 	$password = $_GET['password'];

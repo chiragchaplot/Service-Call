@@ -18,6 +18,7 @@
         android:hint = "Employee ID"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/apptheme_edit_text_holo_light"
         android:layout_marginTop="47dp" />
 
     <EditText
@@ -28,6 +29,7 @@
         android:id="@+id/password"
         android:hint = "Password"
         android:layout_below="@+id/emp_id"
+        android:background="@drawable/apptheme_edit_text_holo_light"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="56dp" />
 
@@ -36,15 +38,17 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         android:id="@+id/submit"
+        android:background="@drawable/apptheme_btn_default_holo_light"
         android:layout_below="@+id/password"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Reset"
         android:id="@+id/reset"
+        android:background="@drawable/apptheme_btn_default_holo_light"
         android:layout_below="@+id/submit"
         android:layout_alignRight="@+id/submit"
         android:layout_alignEnd="@+id/submit"

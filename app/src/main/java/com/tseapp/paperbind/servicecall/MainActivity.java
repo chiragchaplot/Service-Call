@@ -147,7 +147,7 @@ public class MainActivity extends ActionBarActivity
                 try {
                     Log.v("CHIRAGCHAPLOT", "Entered DoLogin connection");
 
-                    final String BASE_URL = "http://www.pressmgr.com/chiragchaplot/final/loginsignup/login.php?";
+                    final String BASE_URL = "http://www.chiragchaplot.com/chiragchaplot/final/loginsignup/login.php?";
                     //URL url = new URL("http://pressmgr.com/chiragchaplot/test/login.php?");
                     final String PARAM_EMAIL = "email";
                     final String PARAM_PASSWORD = "password";
