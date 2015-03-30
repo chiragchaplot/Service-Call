@@ -10,10 +10,12 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class todolist extends ActionBarActivity {
+public class todolist extends ActionBarActivity
+{
 
     Button start,todo,end;
 
+    session s;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -29,6 +31,20 @@ public class todolist extends ActionBarActivity {
         todo = (Button) findViewById(R.id.to_do_list);
         end = (Button) findViewById(R.id.end_day);
 
+
+        if (s.start_pressed == true)
+        {
+            start.setEnabled(false);
+            todo.setEnabled(true);
+            end.setEnabled(true);
+        }
+        else
+        {
+            start.setEnabled(true);
+            todo.setEnabled(false);
+            end.setEnabled(false);
+        }
+
         //Start Activity leading to to do list for day
         start.setOnClickListener(
                 new View.OnClickListener()
@@ -36,7 +52,25 @@ public class todolist extends ActionBarActivity {
                     @Override
                     public void onClick(View arg0)
                     {
-                        startActivity(new Intent(getApplicationContext(),Today_List_Work.class));
+                        s.start_pressed = true;
+                        start.setEnabled(false);
+                        todo.setEnabled(true);
+                        end.setEnabled(true);
+                        startActivity(new Intent(getApplicationContext(), Today_List_Work.class));
+
+                    }
+                }
+        );
+
+        end.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        start.setEnabled(true);
+                        todo.setEnabled(false);
+                        end.setEnabled(false);
+                        s.start_pressed = false;
                     }
                 }
         );

@@ -1,13 +1,17 @@
 package com.tseapp.paperbind.servicecall;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,7 +28,8 @@ public class Today_List_Work extends ActionBarActivity
     private ListView mListView;
     private Context mContext = this;
     public session s;
-
+    public AlertDialog call_office;
+    Button office;
     public job_view_adapter adapter;
 
 
@@ -75,6 +80,44 @@ public class Today_List_Work extends ActionBarActivity
 
                     }
                 });
+
+        //Alert Dialog Builder
+        final AlertDialog.Builder builder = new AlertDialog.Builder(Today_List_Work.this);
+        builder.setTitle("Office Details");
+        builder.setMessage("Suite 326, Tower B, Spazedge, \n" +
+                "Sohna Road, Sector 47,\n" +
+                "Gurgaon - 122001 (Haryana) INDIA\n" +
+                "Tel : +91 9555 688 688\n" +
+                "Email : info@paperbind.in");
+        builder.setIcon(R.drawable.ic_launcher);
+        builder.setPositiveButton("Call", new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int id)
+            {
+                //All of the fun happens inside the CustomListener now.
+                //I had to move it to enable data validation.
+                String posted_by = "+919555688688";
+
+                String uri = "tel:" + posted_by.trim() ;
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse(uri));
+                startActivity(intent);
+            }
+        });
+
+        call_office = builder.create();
+
+
+        //Button
+        office = (Button) findViewById(R.id.office);
+        office.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        call_office.show();
+                    }
+                }
+        );
     }
 
 
