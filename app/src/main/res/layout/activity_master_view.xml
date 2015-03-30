@@ -7,5 +7,40 @@
     tools:context="com.tseapp.paperbind.servicecall.master_view">
 
 
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Engineer Location"
+        android:id="@+id/location"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp" />
 
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Open Cases"
+        android:id="@+id/open"
+        android:layout_below="@+id/location"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Closed Cases"
+        android:id="@+id/closed"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/open"
+        android:layout_alignStart="@+id/open" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Reports"
+        android:id="@+id/report"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/closed"
+        android:layout_alignLeft="@+id/closed"
+        android:layout_alignStart="@+id/closed" />
 </RelativeLayout>
