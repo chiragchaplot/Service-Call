@@ -12,6 +12,7 @@ import android.widget.Button;
 public class chose_location extends ActionBarActivity
 {
     Button home, current;
+    session s;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -27,11 +28,25 @@ public class chose_location extends ActionBarActivity
         home = (Button) findViewById(R.id.home);
         current = (Button) findViewById(R.id.current);
 
+        if (s.started_home!=true)
+        {
+            home.setEnabled(true);
+            current.setEnabled(false);
+        }
+        else
+        {
+            home.setEnabled(false);
+            current.setEnabled(true);
+        }
+
+
         home.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(getApplicationContext(),service_start.class));
+                        startActivity(new Intent(getApplicationContext(),Today_List_Work.class));
+                        home.setEnabled(false);
+                        current.setEnabled(true);
                     }
                 }
         );
@@ -40,7 +55,7 @@ public class chose_location extends ActionBarActivity
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(getApplicationContext(),service_start.class));
+                        startActivity(new Intent(getApplicationContext(),Today_List_Work.class));
                     }
                 }
         );

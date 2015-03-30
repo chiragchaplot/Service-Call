@@ -10,6 +10,8 @@ public class session
     public static String machine_code;
     public static String eid;
     public static boolean start_pressed;
+    public static boolean started_home;
+    public static boolean continue_pressed;
 
 
 

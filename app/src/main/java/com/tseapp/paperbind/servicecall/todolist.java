@@ -56,8 +56,20 @@ public class todolist extends ActionBarActivity
                         start.setEnabled(false);
                         todo.setEnabled(true);
                         end.setEnabled(true);
-                        startActivity(new Intent(getApplicationContext(), Today_List_Work.class));
+                        startActivity(new Intent(getApplicationContext(), chose_location.class));
 
+                    }
+                }
+        );
+
+        todo.setOnClickListener(
+                new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View arg0)
+                    {
+                        startActivity(new Intent(getApplicationContext(), chose_location.class));
+                        s.continue_pressed = true;
                     }
                 }
         );
@@ -71,6 +83,7 @@ public class todolist extends ActionBarActivity
                         todo.setEnabled(false);
                         end.setEnabled(false);
                         s.start_pressed = false;
+                        s.started_home = false;
                     }
                 }
         );

@@ -40,9 +40,14 @@ public class Today_List_Work extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today__list__work);
         addjobs();
+        alert_dialog_builder();
         UIbuilder();
     }
 
+    public void alert_dialog_builder()
+    {
+
+    }
     public void UIbuilder()
     {
         TextView DisplayDate = (TextView) findViewById(R.id.tvDate);
@@ -76,7 +81,7 @@ public class Today_List_Work extends ActionBarActivity
                         t.show();
                         s.job = chosen;
 
-                        startActivity(new Intent(getApplicationContext(),chose_location.class));
+                        startActivity(new Intent(getApplicationContext(),service_start.class));
 
                     }
                 });
@@ -124,6 +129,9 @@ public class Today_List_Work extends ActionBarActivity
     public void addjobs()
     {
         jobs.add(new job_list("PaperBind","Suite 326, Spazedge Park","Sector 47","Gurgaon","HR","122001","9999999999","Nisha Joseph"));
+        jobs.add(new job_list("Solar Printers","D 10/7","Okhla Industrial Area","New Delhi","ND","110020","+91-11-6650 1000-04","Solar"));
+        jobs.add(new job_list("Lunar Printers","MG Road","Sector 39","Gurgaon","HR","110020","+919876543210","Prajapati Shrikant Singham"));
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
