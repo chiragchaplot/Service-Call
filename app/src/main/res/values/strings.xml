@@ -19,5 +19,6 @@
     <string name="settings">Settings</string>
     <string name="cancel">Cancel</string>
     <string name="title_activity_engineer_location">Map</string>
+    <string name="title_activity_chose_engineer">chose_engineer</string>
 
 </resources>
