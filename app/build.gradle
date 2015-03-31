@@ -43,7 +43,7 @@ dependencies {
     
     //Signature
     compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.google.android.gms:play-services:7.0.0'
+    compile 'com.google.android.gms:play-services:4.2.42'
     compile 'com.journeyapps:zxing-android-embedded:2.1.0@aar'
     compile 'com.journeyapps:zxing-android-legacy:2.1.0@aar'
     compile 'com.journeyapps:zxing-android-integration:2.1.0@aar'
