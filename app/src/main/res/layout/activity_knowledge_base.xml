@@ -17,7 +17,6 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:imeOptions="actionNext"
         android:id="@+id/ans_1"
         android:layout_below="@+id/textView"
@@ -38,7 +37,6 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:id="@+id/ans_2"
         android:imeOptions="actionNext"
         android:layout_below="@+id/textView2"
@@ -59,7 +57,6 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:id="@+id/ans_3"
         android:imeOptions="actionDone"
         android:layout_below="@+id/textView3"

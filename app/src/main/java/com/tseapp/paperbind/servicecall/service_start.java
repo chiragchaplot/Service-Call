@@ -80,6 +80,7 @@ public class service_start extends ActionBarActivity
                     @Override
                     public void onClick(View v)
                     {
+                        s.barcode = barcode.getText().toString();
                         startActivity(new Intent(getApplicationContext(),fill_details.class));
                     }
                 }

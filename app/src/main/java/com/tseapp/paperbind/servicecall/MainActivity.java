@@ -9,6 +9,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -78,6 +80,8 @@ public class MainActivity extends ActionBarActivity
         public String id,pwd,name;
         public String result;
         public boolean done=false;
+        public session s;
+
 
 
 
@@ -94,6 +98,27 @@ public class MainActivity extends ActionBarActivity
 
             emp_id = (EditText) rootView.findViewById(R.id.emp_id);
             password = (EditText) rootView.findViewById(R.id.password);
+
+            password.addTextChangedListener(
+                    new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                            submit.setEnabled(false);
+                            reset.setEnabled(false);
+                        }
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                            submit.setEnabled(true);
+                            reset.setEnabled(true);
+                        }
+                    }
+            );
 
             submit.setOnClickListener(
                     new View.OnClickListener()
@@ -130,6 +155,7 @@ public class MainActivity extends ActionBarActivity
 
         public void login()
         {
+            s.eid = emp_id.getText().toString();
             startActivity(new Intent(getActivity(),todolist.class));
 
         }

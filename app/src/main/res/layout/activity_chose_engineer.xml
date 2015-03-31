@@ -10,6 +10,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text = "Engineer Name"/>
+        android:text = "Engineer Name"
+        android:id="@+id/engineer" />
 
 </RelativeLayout>

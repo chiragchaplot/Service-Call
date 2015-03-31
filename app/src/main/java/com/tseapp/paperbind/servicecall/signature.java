@@ -31,6 +31,7 @@ public class signature extends ActionBarActivity
     MediaScannerConnection msConn;
     EditText name, phone;
     Button submit;
+    session s;
 
 
     @Override
@@ -47,13 +48,7 @@ public class signature extends ActionBarActivity
             @Override
             public void onSigned()
             {
-                //Event triggered when the pad is signed
-                Bitmap bp = mSignaturePad.getSignatureBitmap();
-
-                //Save it
-                savePhoto(bp);
-
-                //
+               s.end_shift_sign  = mSignaturePad.getSignatureBitmap();
             }
 
             @Override
@@ -89,65 +84,20 @@ public class signature extends ActionBarActivity
         submit.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v)
+                    {
+                        s.end_person_incharge = name.getText().toString();
+                        s.end_person_phone = phone.getText().toString();
                         startActivity(new Intent(getApplicationContext(),knowledge_base.class));
-
                     }
                 }
         );
     }
 
-    public void savePhoto(Bitmap bmp)
-    {
-        imageFileFolder = new File(Environment.getExternalStorageDirectory(),"Rotate");
-        imageFileFolder.mkdir();
-        FileOutputStream out = null;
-        Calendar c = Calendar.getInstance();
-        String date = fromInt(c.get(Calendar.MONTH))
-                + fromInt(c.get(Calendar.DAY_OF_MONTH))
-                + fromInt(c.get(Calendar.YEAR))
-                + fromInt(c.get(Calendar.HOUR_OF_DAY))
-                + fromInt(c.get(Calendar.MINUTE))
-                + fromInt(c.get(Calendar.SECOND));
-        imageFileName = new File(imageFileFolder, date.toString() + ".jpg");
-        try
-        {
-            out = new FileOutputStream(imageFileName);
-            bmp.compress(Bitmap.CompressFormat.JPEG, 100, out);
-            out.flush();
-            out.close();
-            scanPhoto(imageFileName.toString());
-            out = null;
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
 
 
-    public String fromInt(int val)
-    {
-        return String.valueOf(val);
-    }
 
 
-    public void scanPhoto(final String imageFileName)
-    {
-        msConn = new MediaScannerConnection(signature.this,new MediaScannerConnection.MediaScannerConnectionClient()
-        {
-            public void onMediaScannerConnected()
-            {
-                msConn.scanFile(imageFileName, null);
-                Log.i("msClient obj  in Photo Utility", "connection established");
-            }
-            public void onScanCompleted(String path, Uri uri)
-            {
-                msConn.disconnect();
-                Log.i("msClient obj in Photo Utility","scan completed");
-            }
-        });
-        msConn.connect();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

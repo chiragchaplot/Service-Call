@@ -36,9 +36,11 @@ public class counter extends ActionBarActivity
 
     TextView name,location, machinename;
 
-    private Runnable timer = new Runnable() {
+    private Runnable timer = new Runnable()
+    {
         @Override
-        public void run() {
+        public void run()
+        {
             TimeConverter timeConverter = new TimeConverter(System.currentTimeMillis() - startTime);
             hour.setText(TimeConverter.twoDigits(timeConverter.getHours()));
             minutes.setText(TimeConverter.twoDigits(timeConverter.getMinutes()));
@@ -76,6 +78,7 @@ public class counter extends ActionBarActivity
                                         //When Call is completed
                                         handler.removeCallbacks(timer);
                                         running = false;
+                                        recordtimer();
                                         result = 0;
                                         startActivity(new Intent(getApplicationContext(),signature.class));
                                         break;
@@ -83,6 +86,7 @@ public class counter extends ActionBarActivity
                                     case 1:
                                         //When call is incomplete
                                         running = false;
+                                        recordtimer();
                                         result = 1;
                                         break;
 
@@ -90,6 +94,7 @@ public class counter extends ActionBarActivity
                                         //When call is escalated to another engineer
                                         handler.removeCallbacks(timer);
                                         running = false;
+                                        recordtimer();
                                         result = 2;
                                         startActivity(new Intent(getApplicationContext(),signature.class));
                                         break;
@@ -118,6 +123,10 @@ public class counter extends ActionBarActivity
         BuilderUI();
     }
 
+    public void recordtimer()
+    {
+        s.end_time = hour.getText().toString() + ":" + minutes.getText().toString()+":"+seconds.getText().toString();
+    }
     public void BuilderUI()
     {
         name = (TextView) findViewById(R.id.company_name);

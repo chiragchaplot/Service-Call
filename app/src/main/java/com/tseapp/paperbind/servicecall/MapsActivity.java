@@ -121,7 +121,8 @@ public class MapsActivity extends FragmentActivity implements
     }
 
     @Override
-    protected void onStop() {
+    protected void onStop()
+    {
         // If the client is connected
         if (mLocationClient.isConnected()) {
             stopPeriodicUpdates();
@@ -294,7 +295,8 @@ public class MapsActivity extends FragmentActivity implements
     }
 
     @Override
-    public void onLocationChanged(Location location) {
+    public void onLocationChanged(Location location)
+    {
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         mMap.clear();
         Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())).title("Marker"));

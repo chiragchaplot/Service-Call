@@ -3,12 +3,16 @@ package com.tseapp.paperbind.servicecall;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +27,9 @@ public class fill_details extends ActionBarActivity {
     HashMap<String, List<String>> listDataChild;
 
     Button submit;
+    TextView company_name,address,company_phone;
+    EditText poc,phone;
+    session s;
 
 
     @Override
@@ -47,6 +54,8 @@ public class fill_details extends ActionBarActivity {
                     @Override
                     public void onClick(View v)
                     {
+                        s.person_incharge = poc.getText().toString();
+                        s.phone_incharge = phone.getText().toString();
                         startActivity(new Intent(getApplicationContext(),counter.class));
                     }
                 }
@@ -65,16 +74,54 @@ public class fill_details extends ActionBarActivity {
             }
         });
 
+        //TextViews
+        company_name = (TextView) findViewById(R.id.company_name);
+        address = (TextView) findViewById(R.id.address);
+        company_phone = (TextView) findViewById(R.id.company_phone);
+
+        company_name.setText(s.job.getName());
+        address.setText(s.job.getLine1() +'\n'+ s.job.getArea() +", "+ s.job.getCity() +'\n'+ s.job.getState() +", "+ s.job.getPincode());
+        company_phone.setText(s.job.getPhone());
+
+        //EditText
+        poc = (EditText) findViewById(R.id.poc);
+        phone = (EditText) findViewById(R.id.phone);
+        phone.addTextChangedListener(
+                new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after)
+                    {
+                        submit.setEnabled(false);
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count)
+                    {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s)
+                    {
+                        submit.setEnabled(true);
+                    }
+                }
+        );
+
+
     }
+
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_fill_details, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -88,7 +135,8 @@ public class fill_details extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void prepareListData() {
+    private void prepareListData()
+    {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
@@ -123,7 +171,5 @@ public class fill_details extends ActionBarActivity {
         listDataChild.put(listDataHeader.get(1), paper_cutting);
         listDataChild.put(listDataHeader.get(2), creaser);
         listDataChild.put(listDataHeader.get(3), silt_cut);
-
-
     }
 }

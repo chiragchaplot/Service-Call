@@ -19,6 +19,7 @@ public class knowledge_base extends ActionBarActivity
     EditText ans_1, ans_2,ans_3;
     TextView q2,q3;
     Button submit;
+    session s;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -104,6 +105,10 @@ public class knowledge_base extends ActionBarActivity
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        s.ans1 = ans_1.getText().toString();
+                        s.ans2 = ans_2.getText().toString();
+                        s.ans3 = ans_3.getText().toString();
+
                         finish();
                         startActivity(new Intent(getApplicationContext(),todolist.class));
                     }
