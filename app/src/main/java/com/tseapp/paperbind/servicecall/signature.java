@@ -1,15 +1,11 @@
 package com.tseapp.paperbind.servicecall;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
-import android.net.Uri;
-import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,8 +15,6 @@ import android.widget.EditText;
 import com.github.gcacace.signaturepad.views.SignaturePad;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.util.Calendar;
 
 
 public class signature extends ActionBarActivity
@@ -86,7 +80,7 @@ public class signature extends ActionBarActivity
                     @Override
                     public void onClick(View v)
                     {
-                        s.end_person_incharge = name.getText().toString();
+                        s.end_person_in_charge = name.getText().toString();
                         s.end_person_phone = phone.getText().toString();
                         startActivity(new Intent(getApplicationContext(),knowledge_base.class));
                     }

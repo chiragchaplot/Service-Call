@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
@@ -54,8 +53,8 @@ public class fill_details extends ActionBarActivity {
                     @Override
                     public void onClick(View v)
                     {
-                        s.person_incharge = poc.getText().toString();
-                        s.phone_incharge = phone.getText().toString();
+                        s.person_in_charge = poc.getText().toString();
+                        s.phone_in_charge = phone.getText().toString();
                         startActivity(new Intent(getApplicationContext(),counter.class));
                     }
                 }

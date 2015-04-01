@@ -15,9 +15,9 @@ public class session
     public static boolean start_pressed;
     public static boolean started_home;
     public static boolean continue_pressed;
-    public static String person_incharge, phone_incharge;
+    public static String person_in_charge, phone_in_charge;
     public static String end_time;
     public static Bitmap end_shift_sign;
-    public static String end_person_incharge, end_person_phone;
+    public static String end_person_in_charge, end_person_phone;
     public static String ans1,ans2,ans3;
 }
