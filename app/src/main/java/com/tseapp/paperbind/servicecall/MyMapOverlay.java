@@ -4,20 +4,19 @@ package com.tseapp.paperbind.servicecall;
  * Created by chiragchaplot on 4/3/15.
  */
 
+import java.util.ArrayList;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-
-import com.google.android.gms.maps.OverlayItem;
-
-import java.util.ArrayList;
+import com.google.android.maps.ItemizedOverlay;
+import com.google.android.maps.OverlayItem;
 
 public class MyMapOverlay extends ItemizedOverlay {
     private ArrayList<OverlayItem> mOverlays = new ArrayList<OverlayItem>();
     private Context mContext;
 
     public MyMapOverlay(Drawable defaultMarker) {
-        super(boundCenterBottom(de.faultMarker));
+        super(boundCenterBottom(defaultMarker));
         // TODO Auto-generated constructor stub
     }
 

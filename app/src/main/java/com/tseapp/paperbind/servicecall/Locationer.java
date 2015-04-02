@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.tseapp.paperbind.servicecall.database.LocContentProvider;
 import com.tseapp.paperbind.servicecall.database.LocTable;
-import com.yyl.myrmex.tracking.places.MyPlaces;
+import com.tseapp.paperbind.servicecall.places.MyPlaces;
 
 class Locationer implements LocationListener {
 

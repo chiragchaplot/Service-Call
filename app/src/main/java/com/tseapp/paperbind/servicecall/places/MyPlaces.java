@@ -33,7 +33,7 @@ public class MyPlaces {
             "https://maps.googleapis.com/maps/api/place/details/json?";
     private static final String DEBUG_TAG = "MyPlaces";
     // Fill in the API key you want to use.
-    private String API_KEY = Tracking.getAppContext().getResources().getString(R.string.google_api);
+    private String API_KEY = "AIzaSyA76iVT5YaJnH_lxFMntXQ92rKMVCNzyRE";
 
     private static HttpRequestFactory createRequestFactory(final HttpTransport transport) {
 

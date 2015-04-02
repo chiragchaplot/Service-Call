@@ -77,4 +77,8 @@
         Received an unknown activity request code %1$d in onActivityResult.
     </string>
 
+    <string name="local_service_started">Location tracking</string>
+<string name="toggle_on">Only GPS</string>
+<string name="toggle_off">All providers</string>
+<string name="alert_dialog_two_buttons_title">GPS?</string>
 </resources>

@@ -110,7 +110,7 @@ public class MyService extends Service {
         CharSequence text = getText(R.string.local_service_started);
         // The PendingIntent to launch our activity if the user selects this notification
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, TrackingActivity.class), 0);
+                new Intent(this, chose_location.class), 0);
 
         builder = new NotificationCompat.Builder(getBaseContext())
                 .setContentTitle("You are being tracked...")

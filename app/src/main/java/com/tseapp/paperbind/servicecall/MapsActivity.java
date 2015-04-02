@@ -71,11 +71,6 @@ public class MapsActivity extends FragmentActivity implements
         setUpMapIfNeeded();
 
         // Get handles to the UI view objects
-        mLatLng = (TextView) findViewById(R.id.lat_lng);
-        mAddress = (TextView) findViewById(R.id.address);
-        mActivityIndicator = (ProgressBar) findViewById(R.id.address_progress);
-        mConnectionState = (TextView) findViewById(R.id.text_connection_state);
-        mConnectionStatus = (TextView) findViewById(R.id.text_connection_status);
 
         // Create a new global location parameters object
         mLocationRequest = LocationRequest.create();
