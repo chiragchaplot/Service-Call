@@ -1,14 +1,12 @@
 package com.tseapp.paperbind.servicecall;
 
-import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -17,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -32,8 +29,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class MainActivity extends ActionBarActivity
-{
+public class MainActivity extends ActionBarActivity {
 
 
     @Override
@@ -73,24 +69,20 @@ public class MainActivity extends ActionBarActivity
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment
-    {
+    public static class PlaceholderFragment extends Fragment {
         public Button submit, reset;
         public EditText emp_id, password;
-        public String id,pwd,name;
+        public String id, pwd, name;
         public String result;
-        public boolean done=false;
+        public boolean done = false;
         public session s;
-
-
 
 
         public PlaceholderFragment() {
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-        {
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
             submit = (Button) rootView.findViewById(R.id.submit);
@@ -121,8 +113,7 @@ public class MainActivity extends ActionBarActivity
             );
 
             submit.setOnClickListener(
-                    new View.OnClickListener()
-                    {
+                    new View.OnClickListener() {
 
                         @Override
                         public void onClick(View arg0) {
@@ -136,13 +127,10 @@ public class MainActivity extends ActionBarActivity
                             pwd = password.getText().toString();
 
 
-                            if (id.length() > 0 && pwd.length() > 0)
-                            {
-                                if (id.equals("admin") && pwd.equals("anujmehta"))
-                                {
-                                    startActivity(new Intent(getActivity(),master_view.class));
-                                }
-                                else {
+                            if (id.length() > 0 && pwd.length() > 0) {
+                                if (id.equals("admin") && pwd.equals("anujmehta")) {
+                                    startActivity(new Intent(getActivity(), master_view.class));
+                                } else {
                                     login();
                                 }
                             }
@@ -153,10 +141,9 @@ public class MainActivity extends ActionBarActivity
             return rootView;
         }
 
-        public void login()
-        {
+        public void login() {
             s.eid = emp_id.getText().toString();
-            startActivity(new Intent(getActivity(),todolist.class));
+            startActivity(new Intent(getActivity(), todolist.class));
 
         }
 
@@ -227,12 +214,10 @@ public class MainActivity extends ActionBarActivity
                     }
                 }
 
-                try
-                {
+                try {
                     Log.v("CHIRAGCHAPLOT", loginresult);
                     return getloginresult(loginresult);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -243,11 +228,10 @@ public class MainActivity extends ActionBarActivity
 
             public String getloginresult(String result) throws JSONException {
 
-                result = result.substring(3,result.length());
+                result = result.substring(3, result.length());
                 JSONObject user = new JSONObject(result);
                 String message = user.getString("message");
-                if (message.equals("1"))
-                {
+                if (message.equals("1")) {
                     name = user.getString("name");
                     id = user.getString("uid");
 
@@ -259,8 +243,7 @@ public class MainActivity extends ActionBarActivity
             }
 
             @Override
-            public void onPostExecute(String message)
-            {
+            public void onPostExecute(String message) {
                 if (message.equals("1")) {
                 /*
                     1. Get user details
@@ -272,17 +255,13 @@ public class MainActivity extends ActionBarActivity
                     result = message;
                     done = true;
 
-                }
-                else if (message.equals("2"))
-                {
+                } else if (message.equals("2")) {
                     message = "Email/Password is wrong";
 
-                }
-                else if (message.equals("3")) {
+                } else if (message.equals("3")) {
                     message = "Couldn't connect to server";
 
-                }
-                else {
+                } else {
                     message = "Enter all fields";
 
                 }

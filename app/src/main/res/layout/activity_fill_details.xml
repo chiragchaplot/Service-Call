@@ -1,10 +1,10 @@
 <ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.tseapp.paperbind.servicecall.fill_details"
-    android:background="#ffffff">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.tseapp.paperbind.servicecall.fill_details">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -12,41 +12,40 @@
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        >
+        android:paddingTop="@dimen/activity_vertical_margin">
 
 
         <TextView
             android:id="@+id/company_name"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:text="Company Name" />
+            android:text="Company Name"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
         <TextView
             android:id="@+id/address"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/company_name"
+            android:layout_alignStart="@+id/company_name"
+            android:layout_below="@+id/company_name"
             android:ems="10"
             android:inputType="textPostalAddress"
-            android:text="Address"
-            android:layout_below="@+id/company_name"
-            android:layout_alignLeft="@+id/company_name"
-            android:layout_alignStart="@+id/company_name" />
+            android:text="Address" />
 
         <TextView
             android:id="@+id/company_phone"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/address"
+            android:layout_alignStart="@+id/address"
+            android:layout_below="@+id/address"
             android:ems="10"
             android:inputType="phone"
-            android:text="Phone"
-            android:layout_below="@+id/address"
-            android:layout_alignLeft="@+id/address"
-            android:layout_alignStart="@+id/address" />
+            android:text="Phone" />
 
         <EditText
             android:id="@+id/poc"
@@ -54,10 +53,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/company_phone"
             android:layout_centerHorizontal="true"
-            android:imeOptions="actionNext"
             android:layout_marginTop="30dp"
             android:ems="10"
             android:hint="Person Incharge"
+            android:imeOptions="actionNext"
             android:inputType="textPersonName" />
 
         <EditText
@@ -67,11 +66,10 @@
             android:layout_below="@+id/poc"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="34dp"
-            android:imeOptions="actionDone"
             android:ems="10"
             android:hint="Phone Number"
+            android:imeOptions="actionDone"
             android:inputType="phone" />
-
 
 
         <ExpandableListView
@@ -80,9 +78,8 @@
             android:layout_height="300dp"
             android:layout_below="@+id/phone"
             android:layout_centerHorizontal="true"
-            android:choiceMode="singleChoice"
             android:layout_marginTop="34dp"
-            />
+            android:choiceMode="singleChoice" />
 
 
         <Button

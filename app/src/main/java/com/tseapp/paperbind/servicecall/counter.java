@@ -3,44 +3,22 @@ package com.tseapp.paperbind.servicecall;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.Timer;
-import java.util.TimerTask;
 
+public class counter extends ActionBarActivity {
 
-public class counter extends ActionBarActivity
-{
-
+    private final static String TAG = "StopWatchClass";
     private static boolean running = false;
     private static long startTime = 0;
-    private static Handler handler = new Handler();
-    private final static String TAG = "StopWatchClass";
-    private TextView hour;
-    private TextView minutes;
-    private TextView seconds;
-    private TextView milliseconds;
-    public AlertDialog end_options;
-
-    private int result;
-
-    public session s;
-
-    TextView name,location, machinename;
-
-    private Runnable timer = new Runnable()
-    {
+    private Runnable timer = new Runnable() {
         @Override
-        public void run()
-        {
+        public void run() {
             TimeConverter timeConverter = new TimeConverter(System.currentTimeMillis() - startTime);
             hour.setText(TimeConverter.twoDigits(timeConverter.getHours()));
             minutes.setText(TimeConverter.twoDigits(timeConverter.getMinutes()));
@@ -50,12 +28,19 @@ public class counter extends ActionBarActivity
         }
 
     };
-
+    private static Handler handler = new Handler();
+    public AlertDialog end_options;
+    public session s;
     public String[] items = {"Call Completed", "Call in Progress", "Escalation to Another Engineer", "Cancel"};
+    TextView name, location, machinename;
+    private TextView hour;
+    private TextView minutes;
+    private TextView seconds;
+    private TextView milliseconds;
+    private int result;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counter);
         hour = (TextView) findViewById(R.id.hours);
@@ -80,7 +65,7 @@ public class counter extends ActionBarActivity
                                         running = false;
                                         recordtimer();
                                         result = 0;
-                                        startActivity(new Intent(getApplicationContext(),signature.class));
+                                        startActivity(new Intent(getApplicationContext(), signature.class));
                                         break;
 
                                     case 1:
@@ -96,7 +81,7 @@ public class counter extends ActionBarActivity
                                         running = false;
                                         recordtimer();
                                         result = 2;
-                                        startActivity(new Intent(getApplicationContext(),signature.class));
+                                        startActivity(new Intent(getApplicationContext(), signature.class));
                                         break;
 
                                     case 3:
@@ -109,11 +94,9 @@ public class counter extends ActionBarActivity
         end_options = builder.create();
 
         Button button = (Button) findViewById(R.id.startButton);
-        button.setOnClickListener(new View.OnClickListener()
-        {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 // Creating and Building the Dialog
                 end_options.show();
             }
@@ -123,12 +106,11 @@ public class counter extends ActionBarActivity
         BuilderUI();
     }
 
-    public void recordtimer()
-    {
-        s.end_time = hour.getText().toString() + ":" + minutes.getText().toString()+":"+seconds.getText().toString();
+    public void recordtimer() {
+        s.end_time = hour.getText().toString() + ":" + minutes.getText().toString() + ":" + seconds.getText().toString();
     }
-    public void BuilderUI()
-    {
+
+    public void BuilderUI() {
         name = (TextView) findViewById(R.id.company_name);
         location = (TextView) findViewById(R.id.location);
         machinename = (TextView) findViewById(R.id.machine);

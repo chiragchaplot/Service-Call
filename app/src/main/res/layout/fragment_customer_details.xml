@@ -65,27 +65,26 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select the Components to Work on"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="30dp"
+            android:text="Select the Components to Work on" />
 
         <CheckBox
+            android:id="@+id/pur_380"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text = "PUR Binder 380"
-            android:id = "@+id/pur_380"/>
+            android:text="PUR Binder 380" />
 
         <CheckBox
+            android:id="@+id/pur_440"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text = "PUR Binder 440"
-            android:id = "@+id/pur_440"/>
+            android:text="PUR Binder 440" />
 
         <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/pur_440_2"
-            android:text = "PUR Binder 440+"/>
-
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PUR Binder 440+" />
 
 
     </LinearLayout>

@@ -1,8 +1,8 @@
 package com.tseapp.paperbind.servicecall;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -26,14 +26,13 @@ public class fill_details extends ActionBarActivity {
     HashMap<String, List<String>> listDataChild;
 
     Button submit;
-    TextView company_name,address,company_phone;
-    EditText poc,phone;
+    TextView company_name, address, company_phone;
+    EditText poc, phone;
     session s;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fill_details);
         // preparing list data
@@ -44,18 +43,15 @@ public class fill_details extends ActionBarActivity {
     }
 
 
-    public void UIbuilder()
-    {
+    public void UIbuilder() {
         submit = (Button) findViewById(R.id.start);
         submit.setOnClickListener(
-                new View.OnClickListener()
-                {
+                new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         s.person_in_charge = poc.getText().toString();
                         s.phone_in_charge = phone.getText().toString();
-                        startActivity(new Intent(getApplicationContext(),counter.class));
+                        startActivity(new Intent(getApplicationContext(), counter.class));
                     }
                 }
         );
@@ -67,7 +63,7 @@ public class fill_details extends ActionBarActivity {
 
             @Override
             public void onGroupExpand(int groupPosition) {
-                if(groupPosition != previousGroup)
+                if (groupPosition != previousGroup)
                     expListView.collapseGroup(previousGroup);
                 previousGroup = groupPosition;
             }
@@ -79,7 +75,7 @@ public class fill_details extends ActionBarActivity {
         company_phone = (TextView) findViewById(R.id.company_phone);
 
         company_name.setText(s.job.getName());
-        address.setText(s.job.getLine1() +'\n'+ s.job.getArea() +", "+ s.job.getCity() +'\n'+ s.job.getState() +", "+ s.job.getPincode());
+        address.setText(s.job.getLine1() + '\n' + s.job.getArea() + ", " + s.job.getCity() + '\n' + s.job.getState() + ", " + s.job.getPincode());
         company_phone.setText(s.job.getPhone());
 
         //EditText
@@ -88,20 +84,17 @@ public class fill_details extends ActionBarActivity {
         phone.addTextChangedListener(
                 new TextWatcher() {
                     @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after)
-                    {
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                         submit.setEnabled(false);
                     }
 
                     @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count)
-                    {
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                     }
 
                     @Override
-                    public void afterTextChanged(Editable s)
-                    {
+                    public void afterTextChanged(Editable s) {
                         submit.setEnabled(true);
                     }
                 }
@@ -111,16 +104,14 @@ public class fill_details extends ActionBarActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_fill_details, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -134,8 +125,7 @@ public class fill_details extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void prepareListData()
-    {
+    private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 

@@ -1,47 +1,47 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4f738e"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.tseapp.paperbind.servicecall.Today_List_Work"
-    android:background="#4f738e">
+    tools:context="com.tseapp.paperbind.servicecall.Today_List_Work">
 
 
     <TextView
+        android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id = "@+id/tvDate"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text = "20/13/2015"
-        android:textSize="35sp"
-        />
+        android:text="20/13/2015"
+        android:textSize="35sp" />
 
     <Button
+        android:id="@+id/office"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_below="@+id/tvDate"
-        android:id = "@+id/office"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/office_building"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:background="@drawable/office_building" />
 
     <ListView
+        android:id="@+id/job_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id = "@+id/job_list"
         android:layout_below="@+id/office"
-        android:layout_marginTop="30dp"
-        />
+        android:layout_marginTop="30dp" />
 
     <TextClock
+        android:id="@+id/textClock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textClock"
-        android:layout_below="@+id/tvDate"
         android:layout_alignLeft="@+id/office"
-        android:layout_alignStart="@+id/office" />
+        android:layout_alignStart="@+id/office"
+        android:layout_below="@+id/tvDate" />
 
 
 </RelativeLayout>

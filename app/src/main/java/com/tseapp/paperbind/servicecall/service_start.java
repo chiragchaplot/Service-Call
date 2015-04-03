@@ -1,8 +1,8 @@
 package com.tseapp.paperbind.servicecall;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -16,24 +16,21 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 
-public class service_start extends ActionBarActivity
-{
+public class service_start extends ActionBarActivity {
 
     Button scan, submit, reset;
     EditText barcode;
     session s;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_start);
 
         buildUI();
     }
 
-    public void buildUI()
-    {
+    public void buildUI() {
         scan = (Button) findViewById(R.id.scan_barcode);
         submit = (Button) findViewById(R.id.submit);
         submit.setEnabled(false);
@@ -64,24 +61,21 @@ public class service_start extends ActionBarActivity
         scan.setOnClickListener
                 (
 
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v)
-                    {
-                        IntentIntegrator integrator = new IntentIntegrator(service_start.this);
-                        integrator.initiateScan();
-                    }
-                }
-        );
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                IntentIntegrator integrator = new IntentIntegrator(service_start.this);
+                                integrator.initiateScan();
+                            }
+                        }
+                );
 
         submit.setOnClickListener(
-                new View.OnClickListener()
-                {
+                new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         s.barcode = barcode.getText().toString();
-                        startActivity(new Intent(getApplicationContext(),fill_details.class));
+                        startActivity(new Intent(getApplicationContext(), fill_details.class));
                     }
                 }
         );
@@ -89,10 +83,9 @@ public class service_start extends ActionBarActivity
         reset.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         //Reset or Move Back
-                        startActivity(new Intent(getApplicationContext(),Today_List_Work.class));
+                        startActivity(new Intent(getApplicationContext(), Today_List_Work.class));
                         finish();
                     }
                 }
@@ -124,19 +117,16 @@ public class service_start extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
-    public void button_enabler()
-    {
-        if(barcode.getText().length()>0)
-        {
+    public void button_enabler() {
+        if (barcode.getText().length() > 0) {
             submit.setEnabled(true);
             reset.setEnabled(true);
         }
     }
-    public void onActivityResult(int requestCode, int resultCode, Intent intent)
-    {
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (scanResult != null)
-        {
+        if (scanResult != null) {
             String re = scanResult.getContents();
             Log.d("code", re);
 

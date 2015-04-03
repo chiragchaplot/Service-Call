@@ -3,20 +3,21 @@
 <!-- Generated with http://android-holo-colors.com -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <style name="NewAppTheme" parent="@style/_AppTheme"/>
+    <style name="NewAppTheme" parent="@style/_AppTheme" />
 
-  <style name="_AppTheme" parent="android:Theme.Holo.Light">
+    <style name="_AppTheme" parent="android:Theme.Holo.Light">
 
-    <item name="android:editTextBackground">@drawable/apptheme_edit_text_holo_light</item>
+        <item name="android:editTextBackground">@drawable/apptheme_edit_text_holo_light</item>
 
-    <item name="android:listChoiceIndicatorSingle">@drawable/apptheme_btn_radio_holo_light</item>
+        <item name="android:listChoiceIndicatorSingle">@drawable/apptheme_btn_radio_holo_light
+        </item>
 
-    <item name="android:buttonStyle">@style/ButtonAppTheme</item>
+        <item name="android:buttonStyle">@style/ButtonAppTheme</item>
 
-    <item name="android:imageButtonStyle">@style/ImageButtonAppTheme</item>
+        <item name="android:imageButtonStyle">@style/ImageButtonAppTheme</item>
 
-    <item name="android:ratingBarStyleSmall">@style/RatingBarSmallAppTheme</item>
+        <item name="android:ratingBarStyleSmall">@style/RatingBarSmallAppTheme</item>
 
-  </style>
+    </style>
 
 </resources>

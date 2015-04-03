@@ -7,11 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
-import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -35,10 +31,6 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
-
 public class MapsActivity extends FragmentActivity implements
         LocationListener,
         GooglePlayServicesClient.ConnectionCallbacks,
@@ -51,31 +43,26 @@ public class MapsActivity extends FragmentActivity implements
      */
     private final static int
             CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
-    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
-
-    // A request to connect to Location Services
-    private LocationRequest mLocationRequest;
-    private LocationClient mLocationClient;
-
-    // Handles to UI widgets
-    private TextView mLatLng;
-    private TextView mAddress;
-    private ProgressBar mActivityIndicator;
-    private TextView mConnectionState;
-    private TextView mConnectionStatus;
-
     // Handle to SharedPreferences for this app
     SharedPreferences mPrefs;
-
     // Handle to a SharedPreferences editor
     SharedPreferences.Editor mEditor;
-
     /*
      * Note if updates have been turned on. Starts out as "false"; is set to "true" in the
      * method handleRequestSuccess of LocationUpdateReceiver.
      *
      */
     boolean mUpdatesRequested = false;
+    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    // A request to connect to Location Services
+    private LocationRequest mLocationRequest;
+    private LocationClient mLocationClient;
+    // Handles to UI widgets
+    private TextView mLatLng;
+    private TextView mAddress;
+    private ProgressBar mActivityIndicator;
+    private TextView mConnectionState;
+    private TextView mConnectionStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,8 +108,7 @@ public class MapsActivity extends FragmentActivity implements
     }
 
     @Override
-    protected void onStop()
-    {
+    protected void onStop() {
         // If the client is connected
         if (mLocationClient.isConnected()) {
             stopPeriodicUpdates();
@@ -258,7 +244,7 @@ public class MapsActivity extends FragmentActivity implements
         switch (requestCode) {
 
             // If the request code matches the code sent in onConnectionFailed
-            case LocationUtils.CONNECTION_FAILURE_RESOLUTION_REQUEST :
+            case LocationUtils.CONNECTION_FAILURE_RESOLUTION_REQUEST:
 
                 switch (resultCode) {
                     // If Google Play services resolved the problem
@@ -295,8 +281,7 @@ public class MapsActivity extends FragmentActivity implements
     }
 
     @Override
-    public void onLocationChanged(Location location)
-    {
+    public void onLocationChanged(Location location) {
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         mMap.clear();
         Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())).title("Marker"));
@@ -359,6 +344,7 @@ public class MapsActivity extends FragmentActivity implements
             startPeriodicUpdates();
         }
     }
+
     public void stopUpdates(View v) {
         mUpdatesRequested = false;
 
@@ -396,6 +382,24 @@ public class MapsActivity extends FragmentActivity implements
         }
     }
 
+    /**
+     * In response to a request to start updates, send a request
+     * to Location Services
+     */
+    private void startPeriodicUpdates() {
+        mLocationClient.requestLocationUpdates(mLocationRequest, (com.google.android.gms.location.LocationListener) this);
+        mConnectionState.setText(R.string.location_requested);
+    }
+
+    /**
+     * In response to a request to stop updates, send a request to
+     * Location Services
+     */
+    private void stopPeriodicUpdates() {
+        mLocationClient.removeLocationUpdates((com.google.android.gms.location.LocationListener) this);
+        mConnectionState.setText(R.string.location_updates_stopped);
+    }
+
     // Define a DialogFragment that displays the error dialog
     public static class ErrorDialogFragment extends DialogFragment {
         // Global field to contain the error dialog
@@ -417,23 +421,5 @@ public class MapsActivity extends FragmentActivity implements
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             return mDialog;
         }
-    }
-
-    /**
-     * In response to a request to start updates, send a request
-     * to Location Services
-     */
-    private void startPeriodicUpdates() {
-        mLocationClient.requestLocationUpdates(mLocationRequest, (com.google.android.gms.location.LocationListener) this);
-        mConnectionState.setText(R.string.location_requested);
-    }
-
-    /**
-     * In response to a request to stop updates, send a request to
-     * Location Services
-     */
-    private void stopPeriodicUpdates() {
-        mLocationClient.removeLocationUpdates((com.google.android.gms.location.LocationListener) this);
-        mConnectionState.setText(R.string.location_updates_stopped);
     }
 }

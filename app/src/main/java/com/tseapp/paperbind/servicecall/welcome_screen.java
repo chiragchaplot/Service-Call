@@ -1,61 +1,53 @@
 package com.tseapp.paperbind.servicecall;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
 import android.view.MotionEvent;
-import android.view.Window;
-import android.view.WindowManager;
 
-public class welcome_screen extends ActionBarActivity
-    {
+public class welcome_screen extends ActionBarActivity {
 
-        private Thread mSplashThread;
+    private Thread mSplashThread;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_welcome_screen);
-            final welcome_screen sPlashScreen = this;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_welcome_screen);
+        final welcome_screen sPlashScreen = this;
 
-            mSplashThread =  new Thread(){
-                @Override
-                public void run(){
-                    try {
-                        synchronized(this){
+        mSplashThread = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    synchronized (this) {
 
-                            wait(2000);
-                        }
+                        wait(2000);
                     }
-                    catch(InterruptedException ex){
-                    }
-
-                    finish();
-
-                    Intent intent = new Intent();
-                    intent.setClass(sPlashScreen, MainActivity.class);
-                    startActivity(intent);
-
+                } catch (InterruptedException ex) {
                 }
-            };
 
-            mSplashThread.start();
-        }
+                finish();
 
+                Intent intent = new Intent();
+                intent.setClass(sPlashScreen, MainActivity.class);
+                startActivity(intent);
 
-        @Override
-
-        public boolean onTouchEvent(MotionEvent evt)
-        {
-            if(evt.getAction() == MotionEvent.ACTION_DOWN)
-            {
-                synchronized(mSplashThread){
-                    mSplashThread.notifyAll();
-                }
             }
-            return true;
-        }
+        };
+
+        mSplashThread.start();
     }
+
+
+    @Override
+
+    public boolean onTouchEvent(MotionEvent evt) {
+        if (evt.getAction() == MotionEvent.ACTION_DOWN) {
+            synchronized (mSplashThread) {
+                mSplashThread.notifyAll();
+            }
+        }
+        return true;
+    }
+}
 
