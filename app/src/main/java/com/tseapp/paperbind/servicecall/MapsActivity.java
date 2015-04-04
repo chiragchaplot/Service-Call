@@ -203,7 +203,8 @@ public class MapsActivity extends FragmentActivity implements
          * error.
          */
         if (connectionResult.hasResolution()) {
-            try {
+            try
+            {
 
                 // Start an Activity that tries to resolve the error
                 connectionResult.startResolutionForResult(
@@ -215,7 +216,8 @@ public class MapsActivity extends FragmentActivity implements
                 * PendingIntent
                 */
 
-            } catch (IntentSender.SendIntentException e) {
+            }
+            catch (IntentSender.SendIntentException e) {
 
                 // Log the error
                 e.printStackTrace();
