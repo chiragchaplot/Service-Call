@@ -3,27 +3,34 @@ package com.tseapp.paperbind.servicecall;
 /**
  * Created by chiragchaplot on 3/27/15.
  */
-public class TimeConverter
-{
+public class TimeConverter {
     private final int hours;
     private final int minutes;
     private final int seconds;
     private final int remainder;
-    private final int MAX_MINUTES= 60;
+    private final int MAX_MINUTES = 60;
     private final int MAX_SECONDS = 60;
     private final int MAX_MILLISECONDS = 1000;
-    public TimeConverter(long milliseconds){
+
+    public TimeConverter(long milliseconds) {
         long temp = milliseconds;
-        this.hours = (int)(temp / (MAX_MINUTES * MAX_SECONDS * MAX_MILLISECONDS));
+        this.hours = (int) (temp / (MAX_MINUTES * MAX_SECONDS * MAX_MILLISECONDS));
         temp = temp - (hours * (MAX_MINUTES * MAX_SECONDS * MAX_MILLISECONDS));
-        this.minutes = (int)(temp / (MAX_SECONDS * MAX_MILLISECONDS));
+        this.minutes = (int) (temp / (MAX_SECONDS * MAX_MILLISECONDS));
         temp = temp - (minutes * (MAX_SECONDS * MAX_MILLISECONDS));
-        this.seconds = (int)(temp / (MAX_MILLISECONDS));
-        this.remainder = (int)(temp - (seconds * (MAX_MILLISECONDS)));
+        this.seconds = (int) (temp / (MAX_MILLISECONDS));
+        this.remainder = (int) (temp - (seconds * (MAX_MILLISECONDS)));
     }
 
+    public static String twoDigits(int number) {
+        return String.format("%02d", number);
+    }
 
-    public int getHours(){
+    public static String threeDigits(int number) {
+        return String.format("%03d", number);
+    }
+
+    public int getHours() {
         return hours;
     }
 
@@ -39,14 +46,7 @@ public class TimeConverter
         return remainder;
     }
 
-    public static String twoDigits(int number){
-        return String.format("%02d",number);
-    }
-    public static String threeDigits(int number){
-        return String.format("%03d",number);
-    }
-
-    public String toString(){
-        return String.format("%02dh:%02dm:%02ds:%03d",hours,minutes,seconds,remainder);
+    public String toString() {
+        return String.format("%02dh:%02dm:%02ds:%03d", hours, minutes, seconds, remainder);
     }
 }

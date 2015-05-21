@@ -30,6 +30,10 @@
     <!-- Latitude, longitude format -->
     <string name="latitude_longitude">%1$.8f, %2$.8f</string>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
     <!-- Labels -->
     <string name="latlng">Lat/Long:</string>
     <string name="address">Address:</string>
@@ -402,4 +406,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_open_cases">open_cases</string>
 
+    <string name="local_service_started">Location tracking</string>
+<string name="toggle_on">Only GPS</string>
+<string name="toggle_off">All providers</string>
+<string name="alert_dialog_two_buttons_title">GPS?</string>
 </resources>

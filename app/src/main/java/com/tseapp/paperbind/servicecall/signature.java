@@ -2,8 +2,8 @@ package com.tseapp.paperbind.servicecall;
 
 import android.content.Intent;
 import android.media.MediaScannerConnection;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -17,8 +17,7 @@ import com.github.gcacace.signaturepad.views.SignaturePad;
 import java.io.File;
 
 
-public class signature extends ActionBarActivity
-{
+public class signature extends ActionBarActivity {
 
     SignaturePad mSignaturePad;
     File imageFileFolder, imageFileName;
@@ -35,19 +34,16 @@ public class signature extends ActionBarActivity
         UIBuilder();
     }
 
-    public void UIBuilder()
-    {
+    public void UIBuilder() {
         mSignaturePad = (SignaturePad) findViewById(R.id.signature_pad);
         mSignaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
             @Override
-            public void onSigned()
-            {
-               s.end_shift_sign  = mSignaturePad.getSignatureBitmap();
+            public void onSigned() {
+                s.end_shift_sign = mSignaturePad.getSignatureBitmap();
             }
 
             @Override
-            public void onClear()
-            {
+            public void onClear() {
 
             }
         });
@@ -78,19 +74,14 @@ public class signature extends ActionBarActivity
         submit.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         s.end_person_in_charge = name.getText().toString();
                         s.end_person_phone = phone.getText().toString();
-                        startActivity(new Intent(getApplicationContext(),knowledge_base.class));
+                        startActivity(new Intent(getApplicationContext(), knowledge_base.class));
                     }
                 }
         );
     }
-
-
-
-
 
 
     @Override

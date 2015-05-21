@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tseapp.paperbind.servicecall" >
+    package="com.tseapp.paperbind.servicecall">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <uses-library android:name="com.google.android.maps" />
     <!--
  The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but are recommended.
@@ -17,7 +19,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -27,7 +29,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,48 +38,49 @@
         </activity>
         <activity
             android:name=".todolist"
-            android:label="@string/title_activity_todolist" >
-        </activity>
+            android:label="@string/title_activity_todolist"></activity>
         <activity
             android:name=".Today_List_Work"
             android:label="@string/title_activity_today__list__work"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".service_start"
             android:label="@string/title_activity_service_start"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".fill_details"
-            android:label="@string/title_activity_fill_details" >
-        </activity>
+            android:label="@string/title_activity_fill_details"></activity>
         <activity
             android:name=".counter"
             android:label="@string/title_activity_counter"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".knowledge_base"
             android:label="@string/title_activity_knowledge_base"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".chose_location"
             android:label="@string/title_activity_chose_location"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".signature"
             android:label="@string/title_activity_signature"
+<<<<<<< HEAD
             android:screenOrientation="portrait" >
         </activity>
         
+=======
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".master_view"
+            android:label="@string/title_activity_master_view"
+            android:screenOrientation="portrait"></activity>
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
         <activity
             android:name=".welcome_screen"
             android:label="PaperBind TSE"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -94,6 +97,7 @@
             android:label="@string/title_activity_chose_information" >
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".eng_location"
             android:label="@string/title_activity_eng_location" >
         </activity>
@@ -101,6 +105,13 @@
             android:name=".open_cases"
             android:label="@string/title_activity_open_cases" >
         </activity>
+=======
+            android:name=".chose_engineer"
+            android:label="@string/title_activity_chose_engineer"></activity>
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
     </application>
 
 </manifest>

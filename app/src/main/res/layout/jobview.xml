@@ -1,102 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:id="@+id/container"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <!-- Company Name -->
     <TextView
+        android:id="@+id/companyname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Company Name"
-        android:id="@+id/companyname"
-        android:layout_alignParentTop="true"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:text="Company Name"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <!-- Address -->
     <TextView
+        android:id="@+id/line1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id = "@+id/line1"
-        android:text = "Street Address"
         android:layout_below="@+id/companyname"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="30dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id = "@+id/area"
-        android:layout_below="@+id/line1"
-        android:text = "AREA"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="0dp"
-        />
+        android:text="Street Address" />
 
     <TextView
+        android:id="@+id/area"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id = "@+id/city"
-        android:layout_marginLeft="10dp"
         android:layout_below="@+id/line1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="0dp"
+        android:text="AREA" />
+
+    <TextView
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
         android:layout_toRightOf="@+id/area"
-        android:text=" CITY"
-        android:layout_marginTop="0dp"
-        />
+        android:text=" CITY" />
 
     <TextView
+        android:id="@+id/state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id = "@+id/state"
-        android:text = "STATE "
-        android:layout_below = "@+id/area"
+        android:layout_below="@+id/area"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="0dp"
-        />
+        android:text="STATE " />
 
     <TextView
+        android:id="@+id/pincode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id = "@+id/pincode"
-        android:layout_marginLeft="10dp"
-        android:text = "PINCODE"
         android:layout_below="@+id/area"
-        android:layout_toRightOf="@+id/state"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="0dp"
-        />
+        android:layout_toRightOf="@+id/state"
+        android:text="PINCODE" />
 
 
     <TextView
+        android:id="@+id/poc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id = "@+id/poc"
-        android:text = "Contact Person "
-        android:layout_below = "@+id/state"
+        android:layout_below="@+id/state"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
-        />
+        android:text="Contact Person " />
 
     <TextView
+        android:id="@+id/contact_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id = "@+id/contact_phone"
-        android:text = "Phone Number"
-        android:layout_below = "@+id/poc"
+        android:layout_below="@+id/poc"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="3dp"
-        />
+        android:text="Phone Number" />
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        android:layout_below = "@+id/contact_phone"
+        android:layout_below="@+id/contact_phone"
         android:layout_marginTop="4dp"
-         />
+        android:background="@android:color/darker_gray" />
 
 
 </RelativeLayout>

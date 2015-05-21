@@ -14,8 +14,7 @@ import java.util.List;
 /**
  * Created by chiragchaplot on 3/27/15.
  */
-public class component extends BaseExpandableListAdapter
-{
+public class component extends BaseExpandableListAdapter {
 
     private Context _context;
     private List<String> _listDataHeader; // header titles
@@ -23,7 +22,7 @@ public class component extends BaseExpandableListAdapter
     private HashMap<String, List<String>> _listDataChild;
 
     public component(Context context, List<String> listDataHeader,
-                                 HashMap<String, List<String>> listChildData) {
+                     HashMap<String, List<String>> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;

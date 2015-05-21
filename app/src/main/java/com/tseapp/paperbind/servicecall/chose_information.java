@@ -1,8 +1,8 @@
 package com.tseapp.paperbind.servicecall;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,15 +14,20 @@ public class chose_information extends ActionBarActivity {
     Button location,open,closed,report;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD:app/src/main/java/com/tseapp/paperbind/servicecall/chose_information.java
         setContentView(R.layout.activity_chose_information);
         buildUI();
+=======
+        setContentView(R.layout.activity_master_view);
+
+        buildUI();
+
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839:app/src/main/java/com/tseapp/paperbind/servicecall/master_view.java
     }
 
-    public void buildUI()
-    {
+    public void buildUI() {
         location = (Button) findViewById(R.id.location);
         open = (Button) findViewById(R.id.open);
         closed = (Button) findViewById(R.id.closed);
@@ -36,9 +41,14 @@ public class chose_information extends ActionBarActivity {
         location.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
+<<<<<<< HEAD:app/src/main/java/com/tseapp/paperbind/servicecall/chose_information.java
                     public void onClick(View v)
                     {
                         startActivity(new Intent(getApplicationContext(),eng_location.class));
+=======
+                    public void onClick(View v) {
+                        startActivity(new Intent(getApplicationContext(), chose_engineer.class));
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839:app/src/main/java/com/tseapp/paperbind/servicecall/master_view.java
                     }
                 }
         );
@@ -46,33 +56,54 @@ public class chose_information extends ActionBarActivity {
         open.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
+<<<<<<< HEAD:app/src/main/java/com/tseapp/paperbind/servicecall/chose_information.java
                     public void onClick(View v)
                     {
 
                         startActivity(new Intent(getApplicationContext(),open_cases.class));
 
+=======
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(), "Open Clicked", Toast.LENGTH_SHORT).show();
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839:app/src/main/java/com/tseapp/paperbind/servicecall/master_view.java
                     }
                 }
         );
 
         closed.setOnClickListener(
+<<<<<<< HEAD:app/src/main/java/com/tseapp/paperbind/servicecall/chose_information.java
             new View.OnClickListener() {
                 @Override
                 public void onClick(View v)
                 {
                     startActivity(new Intent(getApplicationContext(),eng_location.class));
 
+=======
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(), "Closed Clicked", Toast.LENGTH_SHORT).show();
+                    }
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839:app/src/main/java/com/tseapp/paperbind/servicecall/master_view.java
                 }
             }
         );
 
         report.setOnClickListener(
+<<<<<<< HEAD:app/src/main/java/com/tseapp/paperbind/servicecall/chose_information.java
             new View.OnClickListener() {
                 @Override
                 public void onClick(View v)
                 {
                     startActivity(new Intent(getApplicationContext(),eng_location.class));
 
+=======
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(), "Reports Clicked", Toast.LENGTH_SHORT).show();
+                    }
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839:app/src/main/java/com/tseapp/paperbind/servicecall/master_view.java
                 }
             }
         );

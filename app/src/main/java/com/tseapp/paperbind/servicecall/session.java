@@ -1,14 +1,17 @@
 package com.tseapp.paperbind.servicecall;
 
 import android.graphics.Bitmap;
-import android.text.format.Time;
 
 /**
  * Created by chiragchaplot on 3/27/15.
  */
+<<<<<<< HEAD
 public class session
 {
     //Jobs List and details
+=======
+public class session {
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
     public static job_list job;
 
     //Machine Details
@@ -32,8 +35,12 @@ public class session
     //ENd of Shift Person in charge
     public static Bitmap end_shift_sign;
     public static String end_person_in_charge, end_person_phone;
+<<<<<<< HEAD
 
     //Knowledge Base
     public static String ans1,ans2,ans3;
     public static String status;
+=======
+    public static String ans1, ans2, ans3;
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
 }

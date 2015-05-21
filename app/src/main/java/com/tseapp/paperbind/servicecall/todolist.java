@@ -1,5 +1,6 @@
 package com.tseapp.paperbind.servicecall;
 
+<<<<<<< HEAD
 import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
@@ -11,7 +12,11 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.support.v7.app.ActionBarActivity;
+=======
+import android.content.Intent;
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,10 +27,9 @@ import com.tseapp.paperbind.servicecall.GPS.TrackerService;
 
 import java.util.ArrayList;
 
-public class todolist extends ActionBarActivity
-{
+public class todolist extends ActionBarActivity {
 
-    Button start,todo,end;
+    Button start, todo, end;
 
     //Tracker Service
     Messenger mService = null;
@@ -34,30 +38,26 @@ public class todolist extends ActionBarActivity
 
 
     session s;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todolist);
 
         connect_to_ui();
     }
 
-    public void connect_to_ui()
-    {
+    public void connect_to_ui() {
         start = (Button) findViewById(R.id.start_day);
         todo = (Button) findViewById(R.id.to_do_list);
         end = (Button) findViewById(R.id.end_day);
 
 
-        if (s.start_pressed == true)
-        {
+        if (s.start_pressed == true) {
             start.setEnabled(false);
             todo.setEnabled(true);
             end.setEnabled(true);
-        }
-        else
-        {
+        } else {
             start.setEnabled(true);
             todo.setEnabled(false);
             end.setEnabled(false);
@@ -65,11 +65,9 @@ public class todolist extends ActionBarActivity
 
         //Start Activity leading to to do list for day
         start.setOnClickListener(
-                new View.OnClickListener()
-                {
+                new View.OnClickListener() {
                     @Override
-                    public void onClick(View arg0)
-                    {
+                    public void onClick(View arg0) {
                         s.start_pressed = true;
                         start.setEnabled(false);
                         todo.setEnabled(true);
@@ -80,17 +78,17 @@ public class todolist extends ActionBarActivity
                         */
                         
                         startActivity(new Intent(getApplicationContext(), chose_location.class));
+                        Intent i = new Intent(todolist.this, MyService.class);
+                        startService(i);
 
                     }
                 }
         );
 
         todo.setOnClickListener(
-                new View.OnClickListener()
-                {
+                new View.OnClickListener() {
                     @Override
-                    public void onClick(View arg0)
-                    {
+                    public void onClick(View arg0) {
                         startActivity(new Intent(getApplicationContext(), chose_location.class));
                         s.continue_pressed = true;
                     }
@@ -100,8 +98,7 @@ public class todolist extends ActionBarActivity
         end.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         start.setEnabled(true);
                         todo.setEnabled(false);
                         end.setEnabled(false);
@@ -117,6 +114,7 @@ public class todolist extends ActionBarActivity
                         */
                         s.start_pressed = false;
                         s.started_home = false;
+                        stopService(new Intent(todolist.this, MyService.class));
                     }
                 }
         );

@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     android:orientation="vertical"
     android:id = "@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+=======
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
 
 
     <Button
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="Start from Home"
         android:id="@+id/home"
-        android:layout_gravity="center_horizontal"
-        android:paddingBottom="20dp" />
-
-    <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Start from Current Location"
-        android:id="@+id/current_location"
         android:layout_gravity="center_horizontal"
+        android:paddingBottom="20dp"
+        android:text="Start from Home" />
+
+    <Button
+        android:id="@+id/current_location"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+<<<<<<< HEAD
         android:paddingTop="5dp" />
 
+=======
+        android:paddingTop="5dp"
+        android:text="Start from Current Location" />
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
 </LinearLayout>

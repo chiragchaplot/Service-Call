@@ -1,14 +1,22 @@
 package com.tseapp.paperbind.servicecall;
 
+<<<<<<< HEAD
 import android.app.AlertDialog;
+=======
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+<<<<<<< HEAD
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
+=======
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -32,8 +40,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class MainActivity extends ActionBarActivity
-{
+public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -75,6 +82,7 @@ public class MainActivity extends ActionBarActivity
     /**
      * A placeholder fragment containing a simple view.
      */
+<<<<<<< HEAD
     public static class PlaceholderFragment extends Fragment
     {
         /*
@@ -84,26 +92,43 @@ public class MainActivity extends ActionBarActivity
         public String result;
         public boolean done=false;
         */
+=======
+    public static class PlaceholderFragment extends Fragment {
+        public Button submit, reset;
+        public EditText emp_id, password;
+        public String id, pwd, name;
+        public String result;
+        public boolean done = false;
+        public session s;
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
 
         public Button start,todo,end;
         //Components
         EditText emp_id,password;
 
+<<<<<<< HEAD
         public session s;
         View rootView;
         public ViewGroup temp;
 
 
+=======
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
         public PlaceholderFragment() {
         }
 
         @Override
+<<<<<<< HEAD
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             rootView = inflater.inflate(R.layout.fragment_main, container, false);
             temp = container;
             connect_to_ui();
             s = new session();
+=======
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
 
             return rootView;
         }
@@ -190,6 +215,7 @@ public class MainActivity extends ActionBarActivity
             );
         }
 
+<<<<<<< HEAD
         public void show_login_dialogue()
         {
             Log.v("CHIRAGCHAPLOT","Entered show_login_dialogue");
@@ -198,6 +224,10 @@ public class MainActivity extends ActionBarActivity
             login_dialogue.setTitle("Log In");
             View convertView = (View) inflater.inflate(R.layout.login_form,temp, false);
             login_dialogue.setView(convertView);
+=======
+            submit.setOnClickListener(
+                    new View.OnClickListener() {
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
 
 
 
@@ -205,6 +235,7 @@ public class MainActivity extends ActionBarActivity
             emp_id = (EditText) convertView.findViewById(R.id.emp_id);
             password = (EditText) convertView.findViewById(R.id.password);
 
+<<<<<<< HEAD
             login_dialogue.setPositiveButton("Submit",new DialogInterface.OnClickListener()
             {
                 public void onClick(DialogInterface dialog, int id)
@@ -213,6 +244,15 @@ public class MainActivity extends ActionBarActivity
                     d.execute();
                 }
             });
+=======
+                            if (id.length() > 0 && pwd.length() > 0) {
+                                if (id.equals("admin") && pwd.equals("anujmehta")) {
+                                    startActivity(new Intent(getActivity(), master_view.class));
+                                } else {
+                                    login();
+                                }
+                            }
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
 
             login_dialogue.setNegativeButton("Reset", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id)
@@ -228,10 +268,16 @@ public class MainActivity extends ActionBarActivity
             logger.show();
         }
 
+<<<<<<< HEAD
 
         public class dologin extends AsyncTask<String, String, String>
         {
             ProgressDialog p = new ProgressDialog(getActivity());
+=======
+        public void login() {
+            s.eid = emp_id.getText().toString();
+            startActivity(new Intent(getActivity(), todolist.class));
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
 
             @Override
             protected void onPreExecute()
@@ -308,12 +354,10 @@ public class MainActivity extends ActionBarActivity
                     }
                 }
 
-                try
-                {
+                try {
                     Log.v("CHIRAGCHAPLOT", loginresult);
                     return getloginresult(loginresult);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -325,6 +369,7 @@ public class MainActivity extends ActionBarActivity
             public String getloginresult(String result) throws JSONException
             {
 
+<<<<<<< HEAD
                 //{"name":"Muthu","phone":"7766554433","email":"muthu@paperidea.in","message":"4"}
                 JSONObject user = new JSONObject(result);
                 String message = user.getString("message");
@@ -333,6 +378,15 @@ public class MainActivity extends ActionBarActivity
                     s.emp_name = user.getString("name");
                     s.emp_phone= user.getString("phone");
                     s.emp_phone= user.getString("email");
+=======
+                result = result.substring(3, result.length());
+                JSONObject user = new JSONObject(result);
+                String message = user.getString("message");
+                if (message.equals("1")) {
+                    name = user.getString("name");
+                    id = user.getString("uid");
+
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
                 }
                 Log.v("CHIRAGCHAPLOT", "MESSAGE CODE: " + message);
 
@@ -341,6 +395,7 @@ public class MainActivity extends ActionBarActivity
             }
 
             @Override
+<<<<<<< HEAD
             public void onPostExecute(String message)
             {
                 p.dismiss();
@@ -372,6 +427,28 @@ public class MainActivity extends ActionBarActivity
                 }
             }
         }
+=======
+            public void onPostExecute(String message) {
+                if (message.equals("1")) {
+                /*
+                    1. Get user details
+                    2. Create New Session with email and password
+                */
+                    message = "You have logged in successfully";
+                    //Open the fragment with the next fragment
+                    //startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    result = message;
+                    done = true;
+
+                } else if (message.equals("2")) {
+                    message = "Email/Password is wrong";
+
+                } else if (message.equals("3")) {
+                    message = "Couldn't connect to server";
+
+                } else {
+                    message = "Enter all fields";
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
 
 
         /*

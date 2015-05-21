@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 /**
  * Created by chiragchaplot on 4/1/15.
  */
+<<<<<<< HEAD
 public class engineer
 {
     /*
@@ -14,4 +15,8 @@ public class engineer
 
     //Add engineers to database
 
+=======
+public class engineer {
+    public static String name, phone, email, id, emp_id;
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
 }

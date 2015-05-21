@@ -2,10 +2,14 @@ package com.tseapp.paperbind.servicecall;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
+=======
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -28,23 +32,25 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class knowledge_base extends ActionBarActivity
-{
+public class knowledge_base extends ActionBarActivity {
 
-    EditText ans_1, ans_2,ans_3;
-    TextView q2,q3;
+    EditText ans_1, ans_2, ans_3;
+    TextView q2, q3;
     Button submit;
+<<<<<<< HEAD
     public session s;
+=======
+    session s;
+
+>>>>>>> 41a668f5b63b191977a24f0e6903f563ee82a839
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_knowledge_base);
         UIBuilder();
     }
 
-    public void UIBuilder()
-    {
+    public void UIBuilder() {
         ans_1 = (EditText) findViewById(R.id.ans_1);
         ans_2 = (EditText) findViewById(R.id.ans_2);
         ans_3 = (EditText) findViewById(R.id.ans_3);
@@ -125,7 +131,7 @@ public class knowledge_base extends ActionBarActivity
                         s.ans3 = ans_3.getText().toString();
 
                         finish();
-                        startActivity(new Intent(getApplicationContext(),todolist.class));
+                        startActivity(new Intent(getApplicationContext(), todolist.class));
                     }
                 }
         );
