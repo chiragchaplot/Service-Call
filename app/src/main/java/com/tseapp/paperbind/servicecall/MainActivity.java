@@ -1,12 +1,12 @@
 package com.tseapp.paperbind.servicecall;
 
-import android.app.FragmentManager;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,9 +17,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,12 +35,13 @@ import java.net.URL;
 public class MainActivity extends ActionBarActivity
 {
 
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
+        if (savedInstanceState == null)
+        {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
@@ -49,7 +50,8 @@ public class MainActivity extends ActionBarActivity
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
@@ -62,8 +64,8 @@ public class MainActivity extends ActionBarActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        //noinspection SimplifiabeIfStatement
+        if (id == R.id.action_logout) {
             return true;
         }
 
@@ -75,14 +77,21 @@ public class MainActivity extends ActionBarActivity
      */
     public static class PlaceholderFragment extends Fragment
     {
+        /*
         public Button submit, reset;
         public EditText emp_id, password;
-        public String id,pwd,name;
+        public String id,pwd,name,phone,email;
         public String result;
         public boolean done=false;
+        */
+
+        public Button start,todo,end;
+        //Components
+        EditText emp_id,password;
+
         public session s;
-
-
+        View rootView;
+        public ViewGroup temp;
 
 
         public PlaceholderFragment() {
@@ -91,76 +100,148 @@ public class MainActivity extends ActionBarActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            temp = container;
+            connect_to_ui();
+            s = new session();
 
-            submit = (Button) rootView.findViewById(R.id.submit);
-            reset = (Button) rootView.findViewById(R.id.reset);
-
-            emp_id = (EditText) rootView.findViewById(R.id.emp_id);
-            password = (EditText) rootView.findViewById(R.id.password);
-
-            password.addTextChangedListener(
-                    new TextWatcher() {
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                            submit.setEnabled(false);
-                            reset.setEnabled(false);
-                        }
-
-                        @Override
-                        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                        }
-
-                        @Override
-                        public void afterTextChanged(Editable s) {
-                            submit.setEnabled(true);
-                            reset.setEnabled(true);
-                        }
-                    }
-            );
-
-            submit.setOnClickListener(
-                    new View.OnClickListener()
-                    {
-
-                        @Override
-                        public void onClick(View arg0) {
-                            ProgressDialog progress;
-                            progress = new ProgressDialog(getActivity());
-                            progress.setTitle("Loading");
-                            progress.setMessage("Wait while logging in...");
-
-                            //String username = txtUsername.getText().toString();
-                            id = emp_id.getText().toString();
-                            pwd = password.getText().toString();
-
-
-                            if (id.length() > 0 && pwd.length() > 0)
-                            {
-                                if (id.equals("admin") && pwd.equals("anujmehta"))
-                                {
-                                    startActivity(new Intent(getActivity(),master_view.class));
-                                }
-                                else {
-                                    login();
-                                }
-                            }
-
-                        }
-                    }
-            );
             return rootView;
         }
 
-        public void login()
+        public void connect_to_ui()
         {
-            s.eid = emp_id.getText().toString();
-            startActivity(new Intent(getActivity(),todolist.class));
+            start = (Button) rootView.findViewById(R.id.start_day);
+            todo = (Button) rootView.findViewById(R.id.to_do_list);
+            end = (Button) rootView.findViewById(R.id.end_day);
 
+            if (s.start_pressed == true)
+            {
+                start.setEnabled(false);
+                todo.setEnabled(true);
+                end.setEnabled(true);
+            }
+            else
+            {
+                start.setEnabled(true);
+                todo.setEnabled(false);
+                end.setEnabled(false);
+            }
+
+
+            //Start Activity leading to to do list for day
+            start.setOnClickListener(
+                    new View.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(View arg0)
+                        {
+                            if(s.loggedin == true)
+                            {
+                                Log.v("CHIRAGCHAPLOT","Start Pressed & User is logged in");
+                                s.start_pressed = true;
+                                start.setEnabled(false);
+                                todo.setEnabled(true);
+                                end.setEnabled(true);
+                            }
+                            else
+                            {
+                                Log.v("CHIRAGCHAPLOT","Start Pressed & User is not logged in");
+                                show_login_dialogue();
+                            }
+                        }
+                    }
+            );
+
+            todo.setOnClickListener(
+                    new View.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(View arg0)
+                        {
+                            startActivity(new Intent(getActivity(), chose_location.class));
+                            s.continue_pressed = true;
+                        }
+                    }
+            );
+
+            end.setOnClickListener
+                    (
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v)
+                        {
+                            start.setEnabled(true);
+                            todo.setEnabled(false);
+                            end.setEnabled(false);
+                        /*
+                        //Stop Service
+                        stopService(new Intent(todolist.this,MyService.class));
+                        // export all current rows
+                        DbExportTask task = new DbExportTask(getApplicationContext());
+                        task.execute();
+                        // delete all current rows
+                        String[] match = {"0"};
+                        getContentResolver().delete(LocContentProvider.CONTENT_URI, LocTable.COLUMN_ID + " > ?", match);
+                        */
+                            s.start_pressed = false;
+                            s.started_home = false;
+                        }
+                    }
+            );
         }
 
-        public class dologin extends AsyncTask<String, String, String> {
+        public void show_login_dialogue()
+        {
+            Log.v("CHIRAGCHAPLOT","Entered show_login_dialogue");
+            final AlertDialog.Builder login_dialogue = new AlertDialog.Builder(getActivity());
+            LayoutInflater inflater = getActivity().getLayoutInflater();
+            login_dialogue.setTitle("Log In");
+            View convertView = (View) inflater.inflate(R.layout.login_form,temp, false);
+            login_dialogue.setView(convertView);
+
+
+
+            //Setting up
+            emp_id = (EditText) convertView.findViewById(R.id.emp_id);
+            password = (EditText) convertView.findViewById(R.id.password);
+
+            login_dialogue.setPositiveButton("Submit",new DialogInterface.OnClickListener()
+            {
+                public void onClick(DialogInterface dialog, int id)
+                {
+                    dologin d = new dologin();
+                    d.execute();
+                }
+            });
+
+            login_dialogue.setNegativeButton("Reset", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id)
+                {
+                    emp_id.setText("");
+                    password.setText("");
+                }
+            });
+
+            //Final Step of creation
+            login_dialogue.setIcon(R.drawable.ic_launcher);
+            AlertDialog logger = login_dialogue.create();
+            logger.show();
+        }
+
+
+        public class dologin extends AsyncTask<String, String, String>
+        {
+            ProgressDialog p = new ProgressDialog(getActivity());
+
+            @Override
+            protected void onPreExecute()
+            {
+                p.setTitle("Login");
+                p.setIcon(R.drawable.login_icon);
+                p.setMessage("Logging you in");
+                p.show();
+            }
+
             @Override
             protected String doInBackground(String... params) {
                 Log.v("CHIRAGCHAPLOT", "ENTERED DOLOGIN");
@@ -173,14 +254,14 @@ public class MainActivity extends ActionBarActivity
                 try {
                     Log.v("CHIRAGCHAPLOT", "Entered DoLogin connection");
 
-                    final String BASE_URL = "http://www.chiragchaplot.com/chiragchaplot/final/loginsignup/login.php?";
-                    //URL url = new URL("http://pressmgr.com/chiragchaplot/test/login.php?");
-                    final String PARAM_EMAIL = "email";
+                    final String BASE_URL = "http://www.rishvatkhori.com/app/service_call/login.php";
+                    final String PARAM_EMAIL = "emp_id";
                     final String PARAM_PASSWORD = "password";
 
                     Uri builtUri = Uri.parse(BASE_URL).buildUpon()
-                            .appendQueryParameter(PARAM_EMAIL, id)
-                            .appendQueryParameter(PARAM_PASSWORD, pwd).build();
+                            .appendQueryParameter(PARAM_EMAIL, emp_id.getText().toString())
+                            .appendQueryParameter(PARAM_PASSWORD, password.getText().toString())
+                            .build();
 
                     Log.v("CHIRAGCHAPLOT", builtUri.toString());
 
@@ -241,16 +322,17 @@ public class MainActivity extends ActionBarActivity
             }
 
 
-            public String getloginresult(String result) throws JSONException {
+            public String getloginresult(String result) throws JSONException
+            {
 
-                result = result.substring(3,result.length());
+                //{"name":"Muthu","phone":"7766554433","email":"muthu@paperidea.in","message":"4"}
                 JSONObject user = new JSONObject(result);
                 String message = user.getString("message");
-                if (message.equals("1"))
+                if (message.equals("4"))
                 {
-                    name = user.getString("name");
-                    id = user.getString("uid");
-
+                    s.emp_name = user.getString("name");
+                    s.emp_phone= user.getString("phone");
+                    s.emp_phone= user.getString("email");
                 }
                 Log.v("CHIRAGCHAPLOT", "MESSAGE CODE: " + message);
 
@@ -261,37 +343,71 @@ public class MainActivity extends ActionBarActivity
             @Override
             public void onPostExecute(String message)
             {
-                if (message.equals("1")) {
-                /*
-                    1. Get user details
-                    2. Create New Session with email and password
-                */
-                    message = "You have logged in successfully";
-                    //Open the fragment with the next fragment
-                    //startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                    result = message;
-                    done = true;
+                p.dismiss();
 
+                if (message.equals("4"))
+                {
+                    s.loggedin=true;
+                    if(emp_id.getText().toString().equals("admin"))
+                    {
+                        startActivity(new Intent(getActivity(),chose_information.class));
+                        getActivity().finish();
+                    }
+                    else
+                    {
+                        s.emp_id = emp_id.getText().toString();
+                        startActivity(new Intent(getActivity(),todolist.class));
+                        getActivity().finish();
+                    }
+                }
+                else if (message.equals("3"))
+                {
+                    message = "Email/Password is wrong";
+                    Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
                 }
                 else if (message.equals("2"))
                 {
-                    message = "Email/Password is wrong";
-
-                }
-                else if (message.equals("3")) {
                     message = "Couldn't connect to server";
-
+                    Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
                 }
-                else {
-                    message = "Enter all fields";
-
-                }
-
-
             }
-
         }
+
+
+        /*
+            submit = (Button) rootView.findViewById(R.id.submit);
+            reset = (Button) rootView.findViewById(R.id.reset);
+
+            emp_id = (EditText) rootView.findViewById(R.id.emp_id);
+            password = (EditText) rootView.findViewById(R.id.password);
+
+
+
+            submit.setOnClickListener(
+                    new View.OnClickListener()
+                    {
+
+                        @Override
+                        public void onClick(View arg0) {
+                            ProgressDialog progress;
+                            progress = new ProgressDialog(getActivity());
+                            progress.setTitle("Loading");
+                            progress.setMessage("Wait while logging in...");
+
+                            //String username = txtUsername.getText().toString();
+                            id = emp_id.getText().toString();
+                            pwd = password.getText().toString();
+
+
+                            if (id.length() > 0 && pwd.length() > 0)
+                            {
+                                dologin d = new dologin();
+                                d.execute();
+                            }
+
+                        }
+                    }
+            );
+            */
     }
-
-
 }

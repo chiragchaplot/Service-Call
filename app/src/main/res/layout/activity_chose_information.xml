@@ -1,0 +1,53 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.tseapp.paperbind.servicecall.chose_information">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id = "@+id/location"
+            android:text = "Engineer Location"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Open Cases"
+            android:id="@+id/open"
+            android:layout_marginTop="56dp"
+            android:layout_below="@+id/location"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Closed Cases"
+            android:id="@+id/closed"
+            android:layout_marginTop="56dp"
+            android:layout_below="@+id/open"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="View Reports"
+            android:id="@+id/report"
+            android:layout_marginTop="56dp"
+            android:layout_below="@+id/closed"
+            android:layout_centerHorizontal="true" />
+
+
+    </RelativeLayout>
+
+
+</ScrollView>

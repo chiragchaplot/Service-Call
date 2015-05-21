@@ -81,7 +81,7 @@ public class Today_List_Work extends ActionBarActivity
                         t.show();
                         s.job = chosen;
 
-                        startActivity(new Intent(getApplicationContext(),service_start.class));
+                        startActivity(new Intent(getApplicationContext(),reached_customer.class));
 
                     }
                 });
@@ -128,16 +128,16 @@ public class Today_List_Work extends ActionBarActivity
 
     public void addjobs()
     {
-        jobs.add(new job_list("PaperBind","Suite 326, Spazedge Park","Sector 47","Gurgaon","HR","122001","9999999999","Nisha Joseph"));
-        jobs.add(new job_list("Solar Printers","D 10/7","Okhla Industrial Area","New Delhi","ND","110020","+91-11-6650 1000-04","Solar"));
-        jobs.add(new job_list("Lunar Printers","MG Road","Sector 39","Gurgaon","HR","110020","+919876543210","Prajapati Shrikant Singham"));
+        jobs.add(new job_list("PaperBind","Suite 326, Spazedge Park","Sector 47","Gurgaon","HR","122001","9999999999","Nisha Joseph","1"));
+        jobs.add(new job_list("Solar Printers","D 10/7","Okhla Industrial Area","New Delhi","ND","110020","+91-11-6650 1000-04","Solar","2"));
+        jobs.add(new job_list("Lunar Printers","MG Road","Sector 39","Gurgaon","HR","110020","+919876543210","Prajapati Shrikant Singham","3"));
 
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_today__list__work, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -150,7 +150,7 @@ public class Today_List_Work extends ActionBarActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
             return true;
         }
 

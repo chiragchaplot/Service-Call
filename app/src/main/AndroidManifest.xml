@@ -72,11 +72,7 @@
             android:label="@string/title_activity_signature"
             android:screenOrientation="portrait" >
         </activity>
-        <activity
-            android:name=".master_view"
-            android:label="@string/title_activity_master_view"
-            android:screenOrientation="portrait" >
-        </activity>
+        
         <activity
             android:name=".welcome_screen"
             android:label="PaperBind TSE"
@@ -88,13 +84,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".chose_engineer"
-            android:label="@string/title_activity_chose_engineer" >
+            android:name=".reached_customer"
+            android:label="@string/title_activity_reached_customer" >
         </activity>
         <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" >
+            android:name=".chose_information"
+            android:label="@string/title_activity_chose_information" >
+        </activity>
+        <activity
+            android:name=".eng_location"
+            android:label="@string/title_activity_eng_location" >
+        </activity>
+        <activity
+            android:name=".open_cases"
+            android:label="@string/title_activity_open_cases" >
         </activity>
     </application>
 

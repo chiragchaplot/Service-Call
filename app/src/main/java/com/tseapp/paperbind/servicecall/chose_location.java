@@ -14,8 +14,8 @@ public class chose_location extends ActionBarActivity
 {
     Button home, current;
     session s;
+    GPSTracker gpsTracker;
 
-    public GPSTracker gpsTracker;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -24,36 +24,10 @@ public class chose_location extends ActionBarActivity
         // check if GPS enabled
         gpsTracker = new GPSTracker(this);
         UIbuilder();
-        send_location();
     }
 
 
-    public void send_location()
-    {
-        if (gpsTracker.canGetLocation())
-        {
-            String stringLatitude = String.valueOf(gpsTracker.latitude);
 
-
-            String stringLongitude = String.valueOf(gpsTracker.longitude);
-
-            String country = gpsTracker.getCountryName(this);
-
-            String city = gpsTracker.getLocality(this);
-
-            String postalCode = gpsTracker.getPostalCode(this);
-
-            String addressLine = gpsTracker.getAddressLine(this);
-            Toast.makeText(getApplicationContext(),stringLatitude+'\n'+stringLatitude+'\n'+country+'\n'+city+'\n'+postalCode+'\n'+addressLine,Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-            // can't get location
-            // GPS or Network is not enabled
-            // Ask user to enable GPS/network in settings
-            Toast.makeText(getApplicationContext(),"Coordinates Not Found",Toast.LENGTH_SHORT).show();
-        }
-    }
     public void UIbuilder()
     {
         home = (Button) findViewById(R.id.home);
@@ -77,8 +51,10 @@ public class chose_location extends ActionBarActivity
                     @Override
                     public void onClick(View v) {
                         startActivity(new Intent(getApplicationContext(),Today_List_Work.class));
+                        s.started_home = true;
                         home.setEnabled(false);
                         current.setEnabled(true);
+
                     }
                 }
         );
@@ -106,7 +82,7 @@ public class chose_location extends ActionBarActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_chose_location, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -118,10 +94,11 @@ public class chose_location extends ActionBarActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 }

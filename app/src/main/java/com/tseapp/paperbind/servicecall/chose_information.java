@@ -7,22 +7,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 
-public class master_view extends ActionBarActivity {
+public class chose_information extends ActionBarActivity {
 
-    Button location, open, closed, report;
-
+    Button location,open,closed,report;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_master_view);
-
-       buildUI();
-
+        setContentView(R.layout.activity_chose_information);
+        buildUI();
     }
 
     public void buildUI()
@@ -32,57 +28,61 @@ public class master_view extends ActionBarActivity {
         closed = (Button) findViewById(R.id.closed);
         report = (Button) findViewById(R.id.report);
 
+        UIoperations();
+    }
+
+    public void UIoperations()
+    {
         location.setOnClickListener(
-                new View.OnClickListener()
-                {
+                new View.OnClickListener() {
                     @Override
                     public void onClick(View v)
                     {
-                        startActivity(new Intent(getApplicationContext(),chose_engineer.class));
+                        startActivity(new Intent(getApplicationContext(),eng_location.class));
                     }
                 }
         );
 
-
         open.setOnClickListener(
-                new View.OnClickListener()
-                {
+                new View.OnClickListener() {
                     @Override
                     public void onClick(View v)
                     {
-                        Toast.makeText(getApplicationContext(),"Open Clicked",Toast.LENGTH_SHORT).show();
+
+                        startActivity(new Intent(getApplicationContext(),open_cases.class));
+
                     }
                 }
         );
 
         closed.setOnClickListener(
-                new View.OnClickListener()
+            new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
                 {
-                    @Override
-                    public void onClick(View v)
-                    {
-                        Toast.makeText(getApplicationContext(),"Closed Clicked",Toast.LENGTH_SHORT).show();
-                    }
+                    startActivity(new Intent(getApplicationContext(),eng_location.class));
+
                 }
+            }
         );
 
         report.setOnClickListener(
-                new View.OnClickListener()
+            new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
                 {
-                    @Override
-                    public void onClick(View v)
-                    {
-                        Toast.makeText(getApplicationContext(),"Reports Clicked",Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );
+                    startActivity(new Intent(getApplicationContext(),eng_location.class));
 
+                }
+            }
+        );
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_master_view, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -94,7 +94,7 @@ public class master_view extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
             return true;
         }
 

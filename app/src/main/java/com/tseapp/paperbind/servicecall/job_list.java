@@ -8,9 +8,9 @@ import android.os.Parcelable;
  */
 public class job_list
 {
-    public String name, line1, area, city, state, pincode,phone,poc,machine_code;
+    public String name, line1, area, city, state, pincode,phone,poc,ticket;
 
-    public job_list(String name, String line1, String area, String city, String state, String pincode, String phone, String poc)
+    public job_list(String name, String line1, String area, String city, String state, String pincode, String phone, String poc, String ticket)
     {
         this.name = name;
         this.line1 = line1;

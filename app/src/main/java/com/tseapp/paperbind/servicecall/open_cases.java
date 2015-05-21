@@ -1,44 +1,24 @@
 package com.tseapp.paperbind.servicecall;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 
-public class chose_engineer extends ActionBarActivity
-{
-    Button engineer;
+public class open_cases extends ActionBarActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chose_engineer);
-        UIbuilder();
+        setContentView(R.layout.activity_open_cases);
     }
 
-    public void UIbuilder()
-    {
-        engineer = (Button) findViewById(R.id.engineer);
-        engineer.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v)
-                    {
-                        startActivity(new Intent(getApplicationContext(),MapsActivity.class));
-                    }
-                }
-        );
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_chose_engineer, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -50,7 +30,7 @@ public class chose_engineer extends ActionBarActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
             return true;
         }
 
